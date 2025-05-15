@@ -1,0 +1,13 @@
+{
+  "name": "cat-shelter",
+  "version": "1.0.0",
+  "description": "cat-shelter exercise",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}

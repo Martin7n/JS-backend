@@ -1,0 +1,13 @@
+{
+  "name": "01-server",
+  "version": "1.0.0",
+  "description": "test-server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
