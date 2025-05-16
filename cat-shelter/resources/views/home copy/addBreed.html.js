@@ -1,6 +1,6 @@
 
 
-const addBreed = `<!DOCTYPE html>
+const addBreed = (breeds) =>  `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +11,7 @@ const addBreed = `<!DOCTYPE html>
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <title>Cat Shelter</title>
 </head>
-
+    
 <body>
     <header>
             <nav>
@@ -24,7 +24,7 @@ const addBreed = `<!DOCTYPE html>
         <h1>Cat Shelter</h1>
     </header>
     <main>
-        <form action="#" method="" class="cat-form">
+        <form action="/cats/add-breed" method="POST" class="cat-form">
             <h2>Add Cat Breed</h2>
             <label for="breed-name">Breed Name</label>
             <input name="breed" type="text" id="breed-name">

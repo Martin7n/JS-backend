@@ -1,6 +1,6 @@
 
 
-const addcat = `<!DOCTYPE html>
+const addcat = (breeds) => `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,6 +11,7 @@ const addcat = `<!DOCTYPE html>
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <title>Cat Shelter</title>
 </head>
+
 
 <body>
     <header>
@@ -24,19 +25,21 @@ const addcat = `<!DOCTYPE html>
         <h1>Cat Shelter</h1>
     </header>
     <main>
-        <form action="#" method="" class="cat-form" enctype="multipart/form-data">
+        <form action="cats/add-cat" method="POST" class="cat-form">
             <h2>Add Cat</h2>
             <label for="name">Name</label>
             <input name="name" type="text" id="name">
             <label for="description">Description</label>
             <textarea name="description" id="description"></textarea>
-            <label for="image">Image</label>
-            <input name="upload" type="file" id="image">
+
+            <label for="imageUrl">Image URL</label>
+            <input name="imageUrl" type="text" id="imageUrl">
+
             <label for="group">Breed</label>
             <select name="breed" id="group">
-                <option value="Fluffy Cat">Fluffy Cat</option>
-				<option value="Fluffy Cat">Fluffy Cat</option>
-				<option value="Fluffy Cat">Fluffy Cat</option>
+            ${breeds.map(br => `<option value=${br.breed}>${br.breed}</option>`).join("\n")}
+
+
             </select>
             <button type="submit">Add Cat</button>
         </form>
@@ -48,3 +51,27 @@ const addcat = `<!DOCTYPE html>
 `
 
 export default addcat;
+
+
+
+        //     <form action="cats/add-cat" method="POST" class="cat-form" enctype="multipart/form-data">
+        //     <h2>Add Cat</h2>
+        //     <label for="name">Name</label>
+        //     <input name="name" type="text" id="name">
+        //     <label for="description">Description</label>
+        //     <textarea name="description" id="description"></textarea>
+
+        //     <label for="image">Image</label>
+        //     <input name="upload" type="file" id="image"></input>
+
+        //     <label for="imageUrl">Image URL</label>
+        //     <input name="imageUrl" type="text" id="imageUrl">
+
+        //     <label for="group">Breed</label>
+        //     <select name="breed" id="group">
+        //     ${breeds.map(br => `<option value=${br.breed}>${br.breed}</option>`).join("\n")}
+
+
+        //     </select>
+        //     <button type="submit">Add Cat</button>
+        // </form>

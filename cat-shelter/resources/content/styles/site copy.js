@@ -159,9 +159,12 @@ form button:hover {
     height: auto;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+    object-fit: cover
     margin: 0 auto;
     display: block;
 }
+
+//width, height and object fit adjusted
 
 .cat-form img {
     height: 250px;
