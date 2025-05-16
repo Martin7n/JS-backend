@@ -6,6 +6,12 @@ import addBreed from "./resources/views/home copy/addBreed.html.js";
 import fspromise from "node:fs/promises";
 
 
+const pathnames = {
+        "cats": './resources/db/cats.json',
+        "breeds": './resources/db/cat-breed.json',
+    };
+
+
 const cats = await readJsonBase("cats");
 // console.log(cats);
 
@@ -22,7 +28,6 @@ const server = createServer(function(req, res) {
         '/cats/add-cat': addcat(breeds),
         '/cats/add-breed': addBreed(breeds),
         "/": indexContent(cats)
-        
     }
 
     const methodRq = req.method;
@@ -37,10 +42,18 @@ const server = createServer(function(req, res) {
             req.on('end', () =>{
                 const data = new URLSearchParams(urlEncodedData);
                 // console.log(data)
-                const newCategory = Object.fromEntries(data.entries())
-                console.log(newCategory)
-                writeJsonBase(urls[req.url], newCategory)
+                const newData = Object.fromEntries(data.entries())
+                console.log(req.url )
+                if (req.url === '/cats/cats/add-cat'){
+                    console.log("DEEEEEBUG")
+                    writeJsonBase("cats", newData, 4);
+                } else if (req.url === '/cats/cats/add-breed')
+                {
+                writeJsonBase("breed", newData, 4);
 
+                }
+
+                
 
             }
             )
@@ -73,16 +86,20 @@ console.log('Server is running on http://localhost:5111...');
 
 
 
-const pathnames = {
-        "cats": './resources/db/cats.json',
-        "breeds": './resources/db/cat-breed.json',
+
+
+async function writeJsonBase(fields, data, sep) {
+    const currentData =  (fields==="cats") ? cats : breeds
+    data.id = currentData.length +1;
+    currentData.push(data);
+
+    console.log(currentData)
+
+    const dataToWrite = JSON.stringify(currentData, null, sep);
+    const a = await fspromise.writeFile(pathnames[fields], dataToWrite, { encoding: 'utf-8' });
+
+
     }
-
-
-async function writeJsonBase(fields, data) {
-    
-}
-
 
 
 async function readJsonBase(field) {
