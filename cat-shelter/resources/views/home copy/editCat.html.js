@@ -1,4 +1,6 @@
-`<!DOCTYPE html>
+
+const editCat = (cat) => `
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,7 +26,7 @@
     <main>
         <form action="#" method="" class="cat-form" enctype="multipart/form-data">
             <h2>Edit Cat</h2>
-            <label for="name">Name</label>
+            <label for="name">${cat.name}</label>
             <input type="text" id="name" value="Pretty Cat">
             <label for="description">Description</label>
             <textarea id="description">Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho.</textarea>
@@ -40,3 +42,6 @@
 </body>
 
 </html>`
+
+
+export default editCat;
