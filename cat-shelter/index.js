@@ -4,6 +4,7 @@ import  cssContent  from "./resources/content/styles/site copy.js";
 import addcat from "./resources/views/home copy/addCat.html.js";
 import addBreed from "./resources/views/home copy/addBreed.html.js";
 import fspromise from "node:fs/promises";
+import { snapshot } from "node:test";
 
 
 const pathnames = {
@@ -41,15 +42,19 @@ const server = createServer(function(req, res) {
 
             req.on('end', () =>{
                 const data = new URLSearchParams(urlEncodedData);
-                // console.log(data)
                 const newData = Object.fromEntries(data.entries())
+
+                // console.log(data)
                 console.log(req.url )
                 if (req.url === '/cats/cats/add-cat'){
-                    console.log("DEEEEEBUG")
+                    // const newData = Object.fromEntries(data.entries())
                     writeJsonBase("cats", newData, 4);
-                } else if (req.url === '/cats/cats/add-breed')
+                } else if (req.url === '/cats/add-breed')
+                
                 {
-                writeJsonBase("breed", newData, 4);
+                writeJsonBase("breeds", newData, 4);    
+                console.log(Object.fromEntries(data.entries()))
+                // writeJsonBase("breed", newData, 4);
 
                 }
 
@@ -89,13 +94,17 @@ console.log('Server is running on http://localhost:5111...');
 
 
 async function writeJsonBase(fields, data, sep) {
-    const currentData =  (fields==="cats") ? cats : breeds
+    const currentData =  (fields==="cats") ? cats  : breeds
+    if (fields==="cats") 
+    {
     data.id = currentData.length +1;
-    currentData.push(data);
+    };
+    currentData.push(data)
 
-    console.log(currentData)
+    // console.log(currentData)
 
     const dataToWrite = JSON.stringify(currentData, null, sep);
+    console.log(dataToWrite)
     const a = await fspromise.writeFile(pathnames[fields], dataToWrite, { encoding: 'utf-8' });
 
 
@@ -103,7 +112,6 @@ async function writeJsonBase(fields, data, sep) {
 
 
 async function readJsonBase(field) {
-
 
     console.log(pathnames[field])
     const path = pathnames[field];

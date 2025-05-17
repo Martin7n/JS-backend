@@ -1,6 +1,8 @@
 [
-  { "breed": "Persian" },
-  { "breed": "Siamese" },
-  { "breed": "Maine Coon" },
-  { "breed": "British Shorthair" }
+    {
+        "breed": "one"
+    },
+    {
+        "breed": "Dzver2"
+    }
 ]
