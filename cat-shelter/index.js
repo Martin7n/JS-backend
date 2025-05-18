@@ -28,6 +28,7 @@ const server = createServer(function(req, res) {
         '/content/styles/site.css': cssContent,
         '/cats/add-cat': addcat(breeds),
         '/cats/add-breed': addBreed(breeds),
+        "/":  indexContent(cats),
     }
 
 
@@ -41,6 +42,11 @@ const server = createServer(function(req, res) {
     
     switch (methodRq) {
         case "POST":
+
+            // const postUrlMapper = {
+            //     '/cats/add-breed': 1
+
+            // }
             let urlEncodedData = '';
             req.on('data', (chunk) => {
             urlEncodedData += chunk;
@@ -60,6 +66,10 @@ const server = createServer(function(req, res) {
                 
                 {
                 writeJsonBase("breeds", newData, 4)
+                } else {
+                
+                    console.log(newData)
+
                 }
             }
             )
@@ -74,9 +84,10 @@ const server = createServer(function(req, res) {
             break;
     
         default:
-            const content = urls[req.url] ? urls[req.url] : routeIdHandler(req.url);
-            // console.log(content)
-            res.write(content)
+            const urlString = req.url;
+            // const content = urls[req.url] ? urls[req.url] : routeIdHandler(req.url);
+            const content = urls[req.url] ? urls[req.url] : editCat((catFinder(req.url)), breeds);
+            res.write(content);
             break;
     }
 
@@ -97,22 +108,62 @@ console.log('Server is running on http://localhost:5111...');
 
 
 
-function routeIdHandler(urlRq){
-
-    if (!urlRq.includes("edit")){ return ("/")}
-        
+const idExtractor = (urlRq) => {
+    
+    if (!urlRq.includes("edit"))
+        { return ("/")}
     const catId =  (urlRq.split("/").pop())
-    console.log(catId)
+    return catId
+}
+
+function catFinder(urlRq){
+
+    const catId = idExtractor(urlRq)
+    console.log(`ID => ${catId}`)
+    let ctt = {}
 
     const ct = cats.map( (cat) => {
     if (Number(cat.id) === Number(catId))
     {
-        return cat
-    }
+        return ctt = {"name":cat.name,
+            "id": cat.id,
+            "description": cat.description,
+            "imageUrl": cat.imageUrl,
+            "breed": cat.breed}
+     } 
         });
-    
-    return(editCat(ct))
+
+    if (!ctt.id){
+        ctt = {"name":"no cat detected",
+            "id": "no cat detected",
+            "description": "no cat detected",
+            "imageUrl": "no cat detected",
+            "breed": "no cat detected"}
+    }
+
+    console.log(ctt)
+    return(ctt)
+
 }
+  
+
+
+// function routeIdHandler(urlRq){
+
+//     if (!urlRq.includes("edit")){ return ("/")}
+        
+//     const catId =  (urlRq.split("/").pop())
+//     console.log(catId)
+
+//     const ct = cats.map( (cat) => {
+//     if (Number(cat.id) === Number(catId))
+//     {
+//         return cat
+//     }
+//         });
+    
+//     return(editCat(ct))
+// }
     
 
 

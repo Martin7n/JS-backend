@@ -1,5 +1,5 @@
 
-const editCat = (cat) => `
+const editCat = (cat, breeds) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,18 +24,27 @@ const editCat = (cat) => `
         <h1>Cat Shelter</h1>
     </header>
     <main>
-        <form action="#" method="" class="cat-form" enctype="multipart/form-data">
+
+     
+        <form action="cats/edit-cat/${cat.id}" method="POST" class="cat-form">
             <h2>Edit Cat</h2>
-            <label for="name">${cat.name}</label>
-            <input type="text" id="name" value="Pretty Cat">
+            <label for="name">Cat name</label>
+            <input type="text" id="name" name="name" value="${cat.name}">
             <label for="description">Description</label>
-            <textarea id="description">Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho.</textarea>
-            <label for="image">Image</label>
-            <input type="file" id="image">
+            <textarea id="description" name="description">${cat.description}</textarea>
+            <label for="imageUrl">Image URL</label>
+            <input name="imageUrl" type="text" id="imageUrl" value="${cat.imageUrl}">
+            
             <label for="group">Breed</label>
-            <select id="group">
-                <option value="Fluffy Cat">Fluffy Cat</option>
+
+            <select name="breed" id="group">
+            ${breeds.map(br => `
+                <option value="${br.breed}" ${br.breed === cat.breed ? 'selected' : ""}>
+                ${br.breed}
+                </option>`).join("\n")
+            }
             </select>
+             <input type="hidden" name="id" value="${cat.id}">
             <button>Edit Cat</button>
         </form>
     </main>
