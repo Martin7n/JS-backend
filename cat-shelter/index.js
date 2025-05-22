@@ -119,7 +119,7 @@ console.log('Server is running on http://localhost:5111...');
 
 const idExtractor = (urlRq) => {
     
-    if (urlRq.includes("delete") | urlRq.includes("edit")) {
+    if (urlRq.includes("delete") || urlRq.includes("edit")) {
         const catId =  urlRq.split("/").pop()
         return catId
     }
