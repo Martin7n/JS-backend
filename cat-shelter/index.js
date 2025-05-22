@@ -66,11 +66,13 @@ const server = createServer(function(req, res) {
                 
                 {
                 writeJsonBase("breeds", newData, 4)
-                } else {
-                
+                } else if (req.url.includes('edit')){
                     console.log(newData)
+                    const catId = idExtractor(req.url)
+                    deleteCat(catId);
+                    writeJsonBase("cats", newData, 4);
 
-                }
+                } 
             }
             )
             res.writeHead(301, {
@@ -85,9 +87,16 @@ const server = createServer(function(req, res) {
     
         default:
             const urlString = req.url;
+
+            if (req.url.includes('delete')){
+                    const catId = idExtractor(req.url)
+                    deleteCat(catId);
+                        res.writeHead(302, { Location: "/" });
+                     res.end();
+                } else {
             // const content = urls[req.url] ? urls[req.url] : routeIdHandler(req.url);
             const content = urls[req.url] ? urls[req.url] : editCat((catFinder(req.url)), breeds);
-            res.write(content);
+            res.write(content);}
             break;
     }
 
@@ -110,15 +119,34 @@ console.log('Server is running on http://localhost:5111...');
 
 const idExtractor = (urlRq) => {
     
-    if (!urlRq.includes("edit"))
-        { return ("/")}
-    const catId =  (urlRq.split("/").pop())
-    return catId
+    if (urlRq.includes("delete") | urlRq.includes("edit")) {
+        const catId =  urlRq.split("/").pop()
+        return catId
+    }
+    return ("/")
+
+}
+
+async function deleteCat(catId){
+    try {
+    const catList = await readJsonBase("cats");
+    console.log(catList)
+    // console.log(catList)
+    const updatedCatList = catList.filter(
+        cat => Number(cat.id) !== Number(catId));
+    const json = JSON.stringify(updatedCatList, null, 4);    
+    const writingToJson = await fspromise.writeFile('./resources/db/cats.json', json,  { encoding: 'utf-8' });
+    // await writeJsonBase("cats", updatedCatList, 4);
+
+    } catch (err) {console.log(err)};
+    
 }
 
 function catFinder(urlRq){
 
     const catId = idExtractor(urlRq)
+    console.log(`aaaaaaaaaaa ${catId}`)
+    
     console.log(`ID => ${catId}`)
     let ctt = {}
 
@@ -148,22 +176,6 @@ function catFinder(urlRq){
   
 
 
-// function routeIdHandler(urlRq){
-
-//     if (!urlRq.includes("edit")){ return ("/")}
-        
-//     const catId =  (urlRq.split("/").pop())
-//     console.log(catId)
-
-//     const ct = cats.map( (cat) => {
-//     if (Number(cat.id) === Number(catId))
-//     {
-//         return cat
-//     }
-//         });
-    
-//     return(editCat(ct))
-// }
     
 
 

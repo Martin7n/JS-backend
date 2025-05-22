@@ -43,7 +43,8 @@ export const indexContent = (cats) => `<!DOCTYPE html>
                         <p><span>Description: </span>${cat.description}</p>
                         <ul class="buttons">
                             <li class="btn edit"><a href="edit/${cat.id}">Change Info</a></li>
-                            <li class="btn delete"><a href="">New Home</a></li>
+                            <br>
+                            <li class="btn delete"><a href="delete/${cat.id}">New Home</a></li>
                         </ul>
                     </li>
                 `).join('\n')}
