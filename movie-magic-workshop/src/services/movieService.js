@@ -24,7 +24,18 @@ export default {
 
         return matchedMovies;
 
+    },
+
+
+    async getOne(movieId){
+        let movieList = await readJSON();
+        const movie = movieList.find(movie => movie.id === movieId)
+        console.log(movie)  
+        return movie
+
+
     }
+    
 
 
 
