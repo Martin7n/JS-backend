@@ -1,14 +1,16 @@
 import fs from 'node:fs/promises'
-import Movie from '../models/Movies.js';
+// import Movie from '../models/Movies.js';
 
 export async function readJSON(){
 
     const data = await fs.readFile("./database.json", {encoding: "utf-8"});
     const dataList = JSON.parse(data)
-    console.log(dataList)
+    // console.log(dataList)
     return dataList
 
 }
+
+export default readJSON
 
 // export async function writeJsonObj(data) {
 
