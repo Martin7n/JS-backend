@@ -22,6 +22,9 @@ app.set('views', './src/views');
 //main routes => router .controller.
 app.use(homeController);
 app.use('/movies', moviesController);
+app.all('*url', (req, res) => {
+    res.render('404');
+});
     
 
 

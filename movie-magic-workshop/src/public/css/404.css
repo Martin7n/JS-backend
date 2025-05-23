@@ -5,6 +5,7 @@
   height: 530px;
   color: white;
   text-align: center;
+  border-radius: 50px;
 }
 
 .not-found {
@@ -14,10 +15,12 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  
 }
 
 .not-found .ufo-img img {
     width: 350px;
+    border-radius: 50px;
 }
 
 .error-num{

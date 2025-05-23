@@ -12,6 +12,8 @@
     max-width: 1000px;
     background-color: #6D6875;
     box-shadow: 0 0px 81px #5b848a;
+        border-radius: 21px;
+
 }
 
 #stars {
@@ -27,18 +29,21 @@
     width: 96%;
     padding: 50px;
     margin-top: -25px;
+    
 }
 
 .card_datails h1 {
     font-size: 30px;
     padding-bottom: 8px;
     text-align: center;
+    
 }
 
 .card_right img {
-    height: 100%;
+    height: 98%;
     width: 420px;
-    border-radius: 2px;
+    padding-top: 10px;
+    border-radius: 21px;
 }
 
 .card-movie {
