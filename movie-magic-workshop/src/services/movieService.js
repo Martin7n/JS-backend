@@ -30,7 +30,7 @@ export default {
     async getOne(movieId){
         let movieList = await readJSON();
         const movie = movieList.find(movie => movie.id === movieId)
-        console.log(movie)  
+        // console.log(movie)  
         return movie
 
 
