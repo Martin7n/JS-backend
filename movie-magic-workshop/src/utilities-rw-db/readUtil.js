@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'
-import Movie from '../../models/Movies';
+// import Movie from '../../models/Movies.js';
 
 export async function readJSON(){
 
@@ -9,11 +9,10 @@ export async function readJSON(){
 
 }
 
-// export function writeJsonObj(data) {
+// export async function writeJsonObj(data) {
 
-    // const obj = new Movie(data)
-    // const dataWrite = await fs.writeFile("./database.json", obj, {encoding: "utf-8"});
-
+//     const obj = new Movie(data)
+//     const dataWrite = await fs.writeFile("./database.json", obj, {encoding: "utf-8"});
     
 // }
 

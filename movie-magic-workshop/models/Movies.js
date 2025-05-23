@@ -2,8 +2,6 @@ import fs from 'node:fs/promises'
 import {v4 as uid} from "uuid";
 
 
-const readMovies = fs.readFile('')
-
 export default class Movie {
 
     constructor(data){

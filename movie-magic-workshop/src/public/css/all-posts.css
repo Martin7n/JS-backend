@@ -29,7 +29,7 @@
   height: 100%;
 }
 
-.band {
+/* .band {
   width: 98%;
   display: flex;
   flex-wrap: wrap;
@@ -39,7 +39,22 @@
   padding-top: 20px;
   padding-bottom: 20px;
   margin-left: 1.5em;
+} */
+
+
+.band {
+  width: 98%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  box-shadow: 0 0px 81px #eff0bd;
+  background-color: #868680(73, 90%, 53%);
+  border-radius: 15%;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-left: 2.5em;
 }
+
 
 .flip {
   position: relative;
@@ -100,7 +115,7 @@
 }
 
 .flip > .front,
-.flip > .back {
+/* .flip > .back {
   display: block;
   color: black;
   font-weight: bold;
@@ -112,7 +127,25 @@
   padding: 1em 1em;
   background: #FFB4A2;
   border-radius: 10px;
+} */
+
+
+.flip > .back {
+  display: block;
+  color: black;
+  font-weight: bold;
+  width: inherit;
+  background-size: cover !important;
+  background-position: center !important;
+  height: 450px;
+  width: 350px;
+  padding: 1em 1em;
+  background: #d5d8c7;
+  border-radius: 10px;
 }
+
+
+
 
 .flip > .back > h2 {
   font-size: 1.5rem;
@@ -141,7 +174,7 @@ img > .text-shadow {
     19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
 }
 
-.details {
+/* .details {
   color: #fff;
   border: none;
   padding: 15px;
@@ -156,7 +189,27 @@ img > .text-shadow {
   -webkit-transition: 300ms ease-in-out;
   -o-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
+} */
+
+
+.details {
+  color: #0666d3;
+  border: none;
+  padding: 15px;
+  outline: none;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-left: 10px;
+  background: #95999c;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 300ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
 }
+
+
 
 .details:hover {
   -webkit-transform: scale(1.1);
@@ -169,7 +222,7 @@ img > .text-shadow {
   height: 100px;
   display: block;
   flex-wrap: wrap;
-  background-color: #FFB4A2;
+  background-color: #f3d7d1;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-left: 1em;
