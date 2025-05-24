@@ -1,6 +1,22 @@
-.createSection,
+/* .createSection,
 .editSection {
   background-color: #b5838d;
+  margin: auto;
+  width: 740px;
+  height: 1050px;
+  margin-top: 1rem;
+  left: 35%;
+  text-align: center;
+  display: flex;
+  color: black;
+  font-weight: bold;
+  box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, 0.5);
+} */
+
+
+.createSection,
+.editSection {
+  background-color: #999c9e;
   margin: auto;
   width: 740px;
   height: 1050px;
@@ -25,6 +41,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .createForm,
 .editForm {
+  /* color: black; */
   width: 720px;
   padding: 10px 0;
   transition: 0.2s;

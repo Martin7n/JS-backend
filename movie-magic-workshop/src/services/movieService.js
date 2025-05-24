@@ -1,10 +1,12 @@
 import express from "express";
-import { readJSON } from "../utilities-rw-db/readWriteUtil.js";
+
+import readWriteUtil from "../utilities-rw-db/readWriteUtil.js";
+
 export default {
 
    async getAll(filter = {}){
 
-        let movieList = await readJSON();
+        let movieList = await readWriteUtil.readJSON();
 
         let matchedMovies = movieList.slice();   
 
@@ -28,18 +30,18 @@ export default {
 
 
     async getOne(movieId){
-        let movieList = await readJSON();
+        let movieList = await readWriteUtil.readJSON();
         const movie = movieList.find(movie => movie.id === movieId)
         // console.log(movie)  
         return movie
 
 
+    },
+
+
+    async writeOne(data){
+        await readWriteUtil.writeJSONall(data);
+
     }
-    
-
-
-
-
-
     
 }

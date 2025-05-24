@@ -1,5 +1,6 @@
 import express from 'express';
 import movieService from '../services/movieService.js';
+import Movie from '../models/Movies.js';
 
 const moviesController = express.Router();
 
@@ -23,6 +24,20 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
 
     res.render('details', {movie})
 
+});
+
+
+moviesController.get('/create',  async (req, res) => {
+    
+    res.render('create')
+
+});
+
+moviesController.post('/create', (req, res) => {
+    const data = req.body
+    const newMovie = new Movie(data).addMovie()
+    res.redirect('/')
+ 
 });
 
 

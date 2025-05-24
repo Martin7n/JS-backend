@@ -25,7 +25,7 @@
         "id": "81313c94-08e0-40bf-85bc-1e7cdeebbef9",
         "title": "Avengers: Endgame",
         "category": "movie",
-        "genre": "Superhero",
+         "genre": "Superhero",
         "director": "Anthony Russo",
         "year": "2019",
         "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg",
@@ -42,60 +42,5 @@
         "rating": 3,
         "description": "sadasd",
         "id": "cff83c38-2eb3-4de5-9644-109ccd8dc799"
-    },
-    {
-        "title": "aaaaaaaa",
-        "category": "animation",
-        "genre": "aaaaaaaaaaa",
-        "director": "aaaaaaaaaaaaaaa",
-        "year": "2014",
-        "imageUrl": "https://images-porsche.imgix.net/-/media/5D0BB7E042BD4C9DBEF84B5E70482520_73AA748306934B0C9CE20E32231DFCE2_CZ25W01IX0011911-carrera-front?w=999&q=85&auto=format",
-        "rating": 15,
-        "description": "1111111111a",
-        "id": "d09048d7-3974-4cea-af5a-665edcb3330c"
-    },
-    {
-        "title": "The Run of the Brum",
-        "category": "animation",
-        "genre": "SUPERHERO",
-        "director": "aaaaaaaaaaaaaaa",
-        "year": "2019",
-        "imageUrl": "https://images-porsche.imgix.net/-/media/5D0BB7E042BD4C9DBEF84B5E70482520_73AA748306934B0C9CE20E32231DFCE2_CZ25W01IX0011911-carrera-front?w=999&q=85&auto=format",
-        "rating": 8,
-        "description": "NICE",
-        "id": "bd32d86c-5951-4f6d-a572-a95a02e21927"
-    },
-    {
-        "title": "The Run of the Brum3",
-        "category": "animation",
-        "genre": "SUPERHERO",
-        "director": "aaaaaaaaaaaaaaa",
-        "year": "2019",
-        "imageUrl": "https://images-porsche.imgix.net/-/media/5D0BB7E042BD4C9DBEF84B5E70482520_73AA748306934B0C9CE20E32231DFCE2_CZ25W01IX0011911-carrera-front?w=999&q=85&auto=format",
-        "rating": 8,
-        "description": "NICE",
-        "id": "4a822ef7-9128-42f3-855f-63094a7ce448"
-    },
-    {
-        "title": "The Run of the Brum5",
-        "category": "tv-show",
-        "genre": "SUPERHERO",
-        "director": "aaaaaaaaaaaaaaa",
-        "year": "2019",
-        "imageUrl": "https://images-porsche.imgix.net/-/media/5D0BB7E042BD4C9DBEF84B5E70482520_73AA748306934B0C9CE20E32231DFCE2_CZ25W01IX0011911-carrera-front?w=999&q=85&auto=format",
-        "rating": 8,
-        "description": "NICE",
-        "id": "89c15457-53c0-44cf-bea6-db1e2c681c01"
-    },
-    {
-        "title": "2",
-        "category": "documentary",
-        "genre": "zzz",
-        "director": "RRR",
-        "year": "2013",
-        "imageUrl": "https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2l0dHklMjBjYXR8ZW58MHx8MHx8fDA%3D",
-        "rating": 6,
-        "description": "12a",
-        "id": "3a6e9f34-bca6-4458-8a1a-7436683079b2"
     }
 ]

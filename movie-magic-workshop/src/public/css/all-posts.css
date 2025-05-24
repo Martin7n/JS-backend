@@ -16,7 +16,7 @@
   font-family: Georgia, serif;
   color: black;
   font-weight: bold;
-  font-family: Ubuntu, sans-serif !important;
+  font-family: U  ntu, sans-serif !important;
 }
 
 .front > h1 {
@@ -49,9 +49,11 @@
   justify-content: space-around;
   box-shadow: 0 0px 81px #eff0bd;
   background-color: #868680(73, 90%, 53%);
-  border-radius: 15%;
-  padding-top: 30px;
+  border-radius: 5%;
+  padding-top: 5em;
   padding-bottom: 20px;
+  padding-left: 3em;
+  padding-right: 3em;
   margin-left: 2.5em;
 }
 
@@ -193,14 +195,14 @@ img > .text-shadow {
 
 
 .details {
-  color: #0666d3;
+  color: black;
   border: none;
   padding: 15px;
   outline: none;
   font-size: 18px;
   margin-top: 30px;
   margin-left: 10px;
-  background: #95999c;
+  background: #b2ccf1;
   border-radius: 12px;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -215,6 +217,8 @@ img > .text-shadow {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
+  color: whitesmoke;
+  background-color: rgb(8, 90, 243);
 }
 
 .no-posts {
