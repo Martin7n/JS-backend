@@ -5,15 +5,26 @@ export default {
 
     async getAllCats(filter){
 
-        const cats = jsonHandler.readJsonBase()
+        const cats = await sonHandler.readJsonBase("cats")
 
         return cats
 
     },
 
     getOneCat(catId){
-        const cats = jsonHandler.readJsonBase()
-        
+        const cats = jsonHandler.readJsonBase("cats")
+        const idCat = cats.map( (cat) => {
+        if (Number(cat.id) === Number(catId))
+            {
+                return ctt = {"name":cat.name,
+                    "id": cat.id,
+                    "description": cat.description,
+                    "imageUrl": cat.imageUrl,
+                    "breed": cat.breed}
+            } 
+                });
+
+            return idCat
 
     },
 
