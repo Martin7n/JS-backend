@@ -21,14 +21,13 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
 
     const movie = await movieService.getOne(movieId).lean();
 
-    res.render('details', {movie})
+    res.render('movie/details', {movie})
 
 });
 
 
 moviesController.get('/create',  async (req, res) => {
-    
-    res.render('create')
+    res.render('movie/create')
 
 });
 
