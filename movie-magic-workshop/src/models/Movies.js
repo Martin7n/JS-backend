@@ -13,6 +13,7 @@ const movieSchema = new Schema({
                 imageUrl: String,
                 rating: Number,
                 description: String,
+                
 });
 
 const Movie = model("Movie", movieSchema);

@@ -1,6 +1,3 @@
-import express from "express";
-
-import readWriteUtil from "../utilities-rw-db/readWriteUtil.js";
 import Movie from "../models/Movies.js";
 
 export default {
@@ -8,26 +5,33 @@ export default {
     getAll(filter = {}){
 
         let query = Movie.find({});
+         // let movieList = await readWriteUtil.readJSON();
+        // let matchedMovies = movieList.slice();   
+        // // if (!filter) { return movies}
+
+         //contains case insensitive
+        if (filter.search) {
+           query =  query.where({title: {$regex: `${filter.search}`, $options: 'i'}})
+        };
+        //exact match case insensitive
+        
+        if (filter.genre) {
+            query =  query.where({genre: {$regex: `^${filter.genre}$`, $options: 'i'}})
+        };  
+        
+        if (filter.year) {
+            query = query.where({year: filter.year});
+        }
+
+        return query;
 
         // let movieList = await readWriteUtil.readJSON();
 
         // let matchedMovies = movieList.slice();   
-
         // // if (!filter) { return movies}
-        if (filter.search) {
-           query =  query.where({title: filter.search})
-        };
-        
-        // if (filter.genre) {
-        // const genre = filter.genre.toLowerCase()
-        // matchedMovies =  matchedMovies.filter(movie => movie.genre.toLowerCase().includes(genre))
-        // }  
-        
-        // if (filter.year) {
-        //     matchedMovies = matchedMovies.filter(movie => Number(movie.year) === Number(filter.year));
-        // }
-
-        return query;
+        // if (filter.search) {
+        //    query =  query.where({title: {$regex: `${filter.search}`, $options: 'i'}})
+        // };
 
     },
 
@@ -42,11 +46,5 @@ export default {
 
 
     },
-
-
-    async writeOne(data){
-        await readWriteUtil.writeJSONall(data);
-
-    }
     
 }
