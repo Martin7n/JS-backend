@@ -2,11 +2,32 @@ import express from 'express';
 import handlebars from 'express-handlebars'
 import homeController from './controllers/homeController.js';
 import moviesController from './controllers/moviesController.js';
-
+import mongoose from 'mongoose';
 
 const app = express();
+
+//db init
+
+try {
+    const uriDefDev = 'mongodb://127.0.0.1:27017/movie-magic'
+    const dbAdress = {
+        "default": uriDefDev,
+        "online": process.env.DATABASE_URI
+    };
+    mongoose.connect(dbAdress.online ?? dbAdress.default)
+    console.log(`DB Connected Successfuly! Connected to: ${dbAdress.online ? "online" : "local"}`);
+
+} catch (err) {
+    console.log(`DB Connection error ${err.message}`)
+}
+
+
+
+
+// express conf
 app.use(express.static('./src/public'));
 app.use(express.urlencoded());
+//templ.eng. conf
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
     helpers: {

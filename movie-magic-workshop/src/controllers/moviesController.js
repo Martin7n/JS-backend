@@ -7,7 +7,7 @@ const moviesController = express.Router();
 moviesController.get('/search',  async (req, res) => {
     const filter = req.query;
     console.log(filter)
-    const context = await movieService.getAll(filter);
+    const context = await movieService.getAll(filter).lean();
     // console.log("----------------------")
     // console.log(context)
     
@@ -20,7 +20,7 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
     console.log(movieId)
     
 
-    const movie = await movieService.getOne(movieId)
+    const movie = await movieService.getOne(movieId);
 
     res.render('details', {movie})
 

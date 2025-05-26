@@ -1,22 +1,41 @@
 import {v4 as uid} from "uuid";
 import movieService from "../services/movieService.js";
-export default class Movie {
 
-    constructor(data){
-        this.data = data;
-    }
+import { Schema, model, Types } from "mongoose";
 
-    async addMovie(data){
-        const movieList = await movieService.getAll();
-        this.data.id = uid();
-        this.data.rating = Math.floor(Number(this.data.rating));
-        movieList.push(this.data)
 
-        const result = await movieService.writeOne(movieList)
+const movieSchema = new Schema({
+                title: String,
+                category: String,
+                genre: String,
+                director: String,
+                year: Number,
+                imageURL: String,
+                rating: Number,
+                description: String,
+});
 
-        console.log(result)
+const Movie = model("Movie", movieSchema);
+export default Movie;
 
-    }
+
+// export default class Movie {
+
+//     constructor(data){
+//         this.data = data;
+//     }
+
+//     async addMovie(data){
+//         const movieList = await movieService.getAll();
+//         this.data.id = uid();
+//         this.data.rating = Math.floor(Number(this.data.rating));
+//         movieList.push(this.data)
+
+//         const result = await movieService.writeOne(movieList)
+
+//         console.log(result)
+
+//     }
 
 
     // for the JSON i will use method - read-write
@@ -28,7 +47,7 @@ export default class Movie {
     // }
 
 
-}
+// }
 
 // task requirments:id – number
 // title => string
