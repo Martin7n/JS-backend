@@ -36,14 +36,11 @@
 
               
                 </div>
-
-
+             </section>
                  {{#each movie.casts}}
 
 
-                 <H1>MOVIE</H1>
-
-            <div class="main-cast-card">
+                <div class="main-cast-card">
                     <div class="cast-card">
                         <div class="card-img">
                             <img src="{{imageUrl}}"
@@ -60,8 +57,13 @@
                 </div>
             
 
-            </section>
+            
+            {{else}}
+                    <div class="no-posts">
+                        <p class="no-offer">No cast yet...</p>
+                    </div> 
             {{/each}}
 
             
 
+   

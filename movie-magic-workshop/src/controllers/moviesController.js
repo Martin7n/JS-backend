@@ -21,7 +21,7 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
     console.log(movieId)
     
 
-    const movie = await movieService.getMovieWithCast(movieId);
+    const movie = await movieService.getMovieWithCast(movieId);;
 
     res.render('movie/details', {movie})
 
