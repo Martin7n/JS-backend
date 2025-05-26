@@ -1,6 +1,8 @@
 import express from 'express';
 import movieService from '../services/movieService.js';
 import Movie from '../models/Movies.js';
+import castservice from '../services/castservice.js';
+
 
 const moviesController = express.Router();
 
@@ -19,7 +21,7 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
     console.log(movieId)
     
 
-    const movie = await movieService.getOne(movieId).populate("casts");
+    const movie = await movieService.getMovieWithCast(movieId);
 
     res.render('movie/details', {movie})
 
@@ -36,6 +38,29 @@ moviesController.post('/create', (req, res) => {
     const newMovie = new Movie(data).save()
     res.redirect('/')
  
+});
+
+moviesController.get("/:movieId/attach-cast", async (req, res) =>{
+    const movieId = req.params.movieId;
+
+   const movie = await movieService.getOne(movieId)
+   const cast = await castservice.getAllCasts();
+   res.render('casts/cast-attach', {movie, cast})
+
+
+});
+
+moviesController.post("/:movieId/attach-cast", async (req, res) =>{
+    const castId = req.body.cast;
+    console.log(castId)
+    const movieId = req.params.movieId;
+    const movie = await movieService.getOne(movieId)
+    await movieService.addCastToMovie(movieId, castId);
+
+   
+   res.redirect(`/movies/details/${movieId}/`)
+
+
 });
 
 

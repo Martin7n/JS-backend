@@ -262,6 +262,11 @@ span {
 
 
 
+.attach-cast{
+    position: fixed;
+
+}
+
 /* adding cast css from resources */
 
 .main-cast-card {

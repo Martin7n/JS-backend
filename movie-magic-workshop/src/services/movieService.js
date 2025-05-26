@@ -43,8 +43,14 @@ export default {
         // const movie = movieList.find(movie => movie.id === movieId)
         // console.log(movie)  
         return query
+    },
 
+    getMovieWithCast(movieId){
+        return Movie.findById(movieId).populate("casts");
+    },
 
+    addCastToMovie(movieId, castId) {
+        return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
     },
     
 }

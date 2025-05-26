@@ -23,22 +23,25 @@
                             <p class="disc">Description: {{movie.description}}</p>
                                 <p class="card-category">Category: {{movie.category}}</p>
                         </div>
+                        <div style="display: flex; justify-content: center;">
+                    <a href="/movies/{{movie.id}}/attach-cast" class="details">Attach</a>
+                    <a href="/movies/{{movie.id}}/edit" class="details">Edit</a>
+                    <a href="/movies/{{movie.id}}/delete" class="details">Delete</a>
+                </div>
                     </div>
                     <div class="card_right">
                         <img src="{{movie.imageUrl}}"
                             alt="image">
                     </div>
+
+              
                 </div>
 
 
-           
-                <div class "attachClass">
-                    <button class "attach-cast"> 
-                    <a href="/casts/attach"> Attach cast</a>
-                    </button>
-                </div>
+                 {{#each movie.casts}}
 
-                 {{#each movie.cast}}
+
+                 <H1>MOVIE</H1>
 
             <div class="main-cast-card">
                     <div class="cast-card">

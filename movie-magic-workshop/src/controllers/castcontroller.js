@@ -21,13 +21,7 @@ castcontroller.post("/create", async (req, res) =>{
 });
 
 
-castcontroller.get("/attach", async (req, res) =>{
 
-   const cast = await castservice.getAllCasts();
-
-    res.render('casts/cast-attach', {cast})
-
-});
 
 
 
