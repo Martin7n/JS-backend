@@ -19,7 +19,7 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
     console.log(movieId)
     
 
-    const movie = await movieService.getOne(movieId).lean();
+    const movie = await movieService.getOne(movieId).populate("casts");
 
     res.render('movie/details', {movie})
 

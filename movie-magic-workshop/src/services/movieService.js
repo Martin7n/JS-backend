@@ -38,7 +38,7 @@ export default {
 
     getOne(movieId){
 
-        let query = Movie.findById(movieId);
+        let query = Movie.findById(movieId)
         // let movieList = await readWriteUtil.readJSON();
         // const movie = movieList.find(movie => movie.id === movieId)
         // console.log(movie)  

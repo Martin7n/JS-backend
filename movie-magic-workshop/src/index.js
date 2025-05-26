@@ -3,6 +3,7 @@ import handlebars from 'express-handlebars'
 import homeController from './controllers/homeController.js';
 import moviesController from './controllers/moviesController.js';
 import mongoose from 'mongoose';
+import castcontroller from './controllers/castcontroller.js';
 
 const app = express();
 
@@ -30,7 +31,11 @@ app.use(express.urlencoded());
 //templ.eng. conf
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
+     runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+    },
     helpers: {
+       
         showRating(rating){
             return '★'.repeat(Math.floor(rating));
         }
@@ -43,6 +48,7 @@ app.set('views', './src/views');
 //main routes => router .controller.
 app.use(homeController);
 app.use('/movies', moviesController);
+app.use('/casts', castcontroller);
 app.all('*url', (req, res) => {
     res.render('404');
 });
