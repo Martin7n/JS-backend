@@ -36,34 +36,23 @@
 
               
                 </div>
-             </section>
-                 {{#each movie.casts}}
-
-
-                <div class="main-cast-card">
-                    <div class="cast-card">
-                        <div class="card-img">
-                            <img src="{{imageUrl}}"
-                                alt="cast">
-                        </div>
-                        <div class="cast-info">
-                            <h1>{{name}}</h1>
-                            <h3>Age: {{age}}</h3>
-                            <h3>Born: {{born}}</h3>
-                            <h3>Name in Movie: TODO</h3>
-                        </div>
-                    </div>
-                    
-                </div>
             
-
-            
-            {{else}}
-                    <div class="no-posts">
-                        <p class="no-offer">No cast yet...</p>
-                    </div> 
-            {{/each}}
-
-            
+                 
+<div class="main-cast-card">
+        {{#each movie.casts}}
+        <div class="cast-card">
+            <div class="card-img">
+                <img src="{{imageUrl}}" alt="{{name}}">
+            </div>
+            <div class="cast-info">
+                <h1>{{name}}</h1>
+                <h3>Age: {{age}}</h3>
+                <h3>Born: {{born}}</h3>
+                <h3>Name in Movie: Pf</h3>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+     </section>
 
    

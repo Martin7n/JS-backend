@@ -46,7 +46,7 @@ export default {
     },
 
     getMovieWithCast(movieId){
-        return Movie.findById(movieId)
+        return Movie.findById(movieId).populate("casts")
     },
 
     addCastToMovie(movieId, castId) {
