@@ -26,7 +26,7 @@ authcontroler.post("/register", async (req, res) => {
         // res.redirect('auth/register', {error})
 
         const error = {error: err}
-        res.redirect('auth/register')
+        res.redirect('users/register')
     }
 
 
@@ -51,7 +51,7 @@ authcontroler.post("/login", async (req, res) => {
 
     } catch (err){
         console.error("not logged in")
-        res.redirect("login")
+        res.redirect("/users/login")
 
     }
 

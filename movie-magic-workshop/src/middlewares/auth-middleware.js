@@ -6,7 +6,7 @@ const SECRET = process.env.SECRET ?? "secretlySecretNonProductionDeSecret1237773
 export const authMiddleware = (req, res, next) => {
 
     const token = req.cookies['auth']
-    
+
     if (!token){ return next()};
 
     try {
@@ -22,6 +22,16 @@ export const authMiddleware = (req, res, next) => {
         res.redirect("/");
     }
 
-
  
+};
+
+
+export const isAuth = (req, res, next) => {
+
+    if (!req.user){
+        console.log("Non logged user")
+
+        return res.redirect("/users/login")
+    }
+    next()
 };

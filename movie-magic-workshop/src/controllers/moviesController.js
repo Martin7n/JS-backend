@@ -2,6 +2,7 @@ import express from 'express';
 import movieService from '../services/movieService.js';
 import Movie from '../models/Movies.js';
 import castservice from '../services/castservice.js';
+import { isAuth } from '../middlewares/auth-middleware.js'
 
 
 const moviesController = express.Router();
@@ -30,7 +31,7 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
 });
 
 
-moviesController.get('/create',  async (req, res) => {
+moviesController.get('/create', isAuth, async (req, res) => {
     res.render('movie/create')
 
 });
@@ -44,7 +45,7 @@ moviesController.post('/create', async (req, res) => {
  
 });
 
-moviesController.get("/:movieId/attach-cast", async (req, res) =>{
+moviesController.get("/:movieId/attach-cast", isAuth, async (req, res) =>{
     const movieId = req.params.movieId;
 
    const movie = await movieService.getOne(movieId)
@@ -66,6 +67,36 @@ moviesController.post("/:movieId/attach-cast", async (req, res) =>{
 
 
 });
+
+
+moviesController.get("/:movieId/edit", async (req, res) => {
+
+    const user = req.user;
+    
+    const movieId = req.params.movieId;
+    const movie = await movieService.getOne(movieId);
+
+
+    if (!movie.createdBy) {return res.redirect("/")}
+    if (!user || !!movie.createdBy.equals(user.id)) {return res.redirect("/")};
+
+    res.render('movie/edit', {movie})
+});
+
+moviesController.post("/:movieId/edit", async (req, res) => {
+
+    const movieId = req.params.movieId;
+    const movieData = req.body;
+
+    console.log(movieId)
+    await movieService.updateMovie(movieId, movieData)
+
+    
+    return res.redirect(`/movies/details/${movieId}`)
+
+
+});
+
 
 
 export default moviesController;

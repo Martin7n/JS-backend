@@ -65,5 +65,10 @@ export default {
 
         return movieCreate;
     },
+
+    updateMovie(movieId, movieData){
+
+        return Movie.findByIdAndUpdate(movieId, movieData)
+    },
     
 }
