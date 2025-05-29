@@ -5,7 +5,7 @@ import moviesController from './controllers/moviesController.js';
 import mongoose from 'mongoose';
 import castcontroller from './controllers/castcontroller.js';
 import authcontroler from './controllers/authcontroler.js';
-
+import cookieParser from 'cookie-parser';
 const app = express();
 
 //db init
@@ -29,6 +29,9 @@ try {
 // express conf
 app.use(express.static('./src/public'));
 app.use(express.urlencoded());
+app.use(cookieParser);
+express
+
 //templ.eng. conf
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
@@ -50,7 +53,7 @@ app.set('views', './src/views');
 app.use(homeController);
 app.use('/movies', moviesController);
 app.use('/casts', castcontroller);
-app.use('/users', authcontroler)
+app.use('/users', authcontroler);
 app.all('*url', (req, res) => {
     res.render('404');
 });

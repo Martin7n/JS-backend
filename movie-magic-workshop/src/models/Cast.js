@@ -6,7 +6,7 @@ const castSchema = new Schema({
     name:{
         type: String, 
         required: [true, "Name is required!!!"],
-        minLength: ["3", "Name should be at least 3 characters"],
+        minLength: [3, "Name should be at least 3 characters"],
         match: [/^[A-Za-z ]+$/, "Only letters are accepted."]
     },
     age: {
