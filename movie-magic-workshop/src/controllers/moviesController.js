@@ -69,16 +69,14 @@ moviesController.post("/:movieId/attach-cast", async (req, res) =>{
 });
 
 
-moviesController.get("/:movieId/edit", async (req, res) => {
+moviesController.get("/:movieId/edit", isAuth, async (req, res) => {
 
     const user = req.user;
     
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId);
-
-
     if (!movie.createdBy) {return res.redirect("/")}
-    if (!user || !!movie.createdBy.equals(user.id)) {return res.redirect("/")};
+    if (!user || !movie.createdBy.equals(user.id)) {return res.redirect("/")};
 
     res.render('movie/edit', {movie})
 });
@@ -89,13 +87,37 @@ moviesController.post("/:movieId/edit", async (req, res) => {
     const movieData = req.body;
 
     console.log(movieId)
+    try {
     await movieService.updateMovie(movieId, movieData)
+    } catch (err) {
+        console.log(err)
+    }
 
     
     return res.redirect(`/movies/details/${movieId}`)
 
 
 });
+
+moviesController.get('/:movieId/delete', isAuth, async (req, res) => {
+
+    const user = req.user;
+    const movieId = req.params.movieId;
+    const movie = await movieService.getOne(movieId);
+    if (!movie.createdBy) {
+            console.log("unauthorized 26355")
+            return res.redirect("/")};
+
+    if (!user || !movie.createdBy.equals(user.id)) {return res.redirect("/")};
+     try { 
+        const movie = await movieService.deleteOne(movieId);
+        return res.redirect(`/`)
+     } catch (err) {
+        console.log(err)
+     }
+});
+
+
 
 
 

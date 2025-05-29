@@ -13,6 +13,7 @@ authcontroler.get("/register", async (req, res) => {
 authcontroler.post("/register", async (req, res) => {
 
     const userData = req.body;
+    if (!userData.email || !userData.password ){ res.redirect('users/register')}
     // const {email, password, repass} = req.body
     // console.log(email, password, repass)
 
