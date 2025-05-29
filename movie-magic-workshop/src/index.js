@@ -7,6 +7,8 @@ import castcontroller from './controllers/castcontroller.js';
 import authcontroler from './controllers/authcontroler.js';
 import cookieParser from 'cookie-parser';
 import expressSession from 'express-session'
+import { authMiddleware } from './middlewares/auth-middleware.js'
+
 const app = express();
 
 //db init
@@ -34,10 +36,13 @@ app.use(express.static('./src/public'));
 app.use(express.urlencoded());
 
 //auth needed middlewares => npm i cookie-parser  npm install express-session
-app.use(cookieParser);
+//jwt @ npm i jsonwebtoken
+ 
+app.use(cookieParser());
 app.use(expressSession({
     secret: SECRET,
     resave: false,
+    saveUninitialized: true,
     cookie: {
         secure: false,
         httpOnly: true
@@ -63,6 +68,7 @@ app.set('views', './src/views');
 
 
 //main routes => router .controller.
+app.use(authMiddleware);
 app.use(homeController);
 app.use('/movies', moviesController);
 app.use('/casts', castcontroller);

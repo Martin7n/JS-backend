@@ -13,6 +13,9 @@ const movieSchema = new Schema({
                 imageUrl: String,
                 rating: Number,
                 description: String,
+                createdBy: {type: Types.ObjectId,
+                            ref: "User"
+                },
                 casts: [{
                     type:Types.ObjectId,
                     ref: "Cast"

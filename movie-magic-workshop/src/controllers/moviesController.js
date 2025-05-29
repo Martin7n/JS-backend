@@ -21,6 +21,7 @@ moviesController.get('/details/:movieId/',  async (req, res) => {
     console.log(movieId)
     const movie = await movieService.getMovieWithCast(movieId);
 
+    console.log(req.user)
 
     console.log(movie)
 

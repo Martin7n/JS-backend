@@ -10,10 +10,23 @@
 
 <body>
 
+
+       
     <div id="box">
 
         <nav>
             <img src="/img/logo.webp" alt="logo">
+
+            
+         {{#if user}} 
+        <div>
+            <h1> {{user.email}}</h1>
+            </div>
+        {{else}}
+        <div>
+                        <h1> Guest</h1>
+                        </div>
+        {{/if}}
 
             <ul class="menu">
                 <li><a href="/">Home</a></li>
