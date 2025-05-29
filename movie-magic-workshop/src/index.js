@@ -6,9 +6,12 @@ import mongoose from 'mongoose';
 import castcontroller from './controllers/castcontroller.js';
 import authcontroler from './controllers/authcontroler.js';
 import cookieParser from 'cookie-parser';
+import expressSession from 'express-session'
 const app = express();
 
 //db init
+
+const SECRET = process.env.SECRET ?? "secretlySecretNonProductionDeSecret12377731999-1"
 
 try {
     const uriDefDev = 'mongodb://127.0.0.1:27017/movie-magic'
@@ -29,8 +32,18 @@ try {
 // express conf
 app.use(express.static('./src/public'));
 app.use(express.urlencoded());
+
+//auth needed middlewares => npm i cookie-parser  npm install express-session
 app.use(cookieParser);
-express
+app.use(expressSession({
+    secret: SECRET,
+    resave: false,
+    cookie: {
+        secure: false,
+        httpOnly: true
+        },
+    }
+));
 
 //templ.eng. conf
 app.engine('hbs', handlebars.engine({
