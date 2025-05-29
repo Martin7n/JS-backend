@@ -52,5 +52,18 @@ export default {
     addCastToMovie(movieId, castId) {
         return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
     },
+
+    createMovie(movieData, userId){
+
+        const movieCreate = Movie.create(
+            {
+            ...movieData, 
+            rating: Number(movieData.rating),
+            year: Number(movieData.year),
+            createdBy: userId,
+        });
+
+        return movieCreate;
+    },
     
 }

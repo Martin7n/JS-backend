@@ -18,16 +18,12 @@ export default {
     },
     async login(email, password){
         const user = await User.findOne({email})
-
-        // console.log(user)
-
         if (!user) { 
             throw new Error("Invalid user or pass #1")
         }
 
         const isValid = await bcrypt.compare(password, user.password);
 
-        console.log(`valiadtion +> ${isValid}`)
         if (!isValid) { 
             throw new Error("Invalid user or pass #2")
         }
@@ -41,7 +37,7 @@ export default {
         return token;
 
     },
-    logout(){},
+   
 
 
 };

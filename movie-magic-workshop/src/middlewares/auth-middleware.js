@@ -6,8 +6,7 @@ const SECRET = process.env.SECRET ?? "secretlySecretNonProductionDeSecret1237773
 export const authMiddleware = (req, res, next) => {
 
     const token = req.cookies['auth']
-    console.log(token)
-
+    
     if (!token){ return next()};
 
     try {

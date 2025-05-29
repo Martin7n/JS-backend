@@ -36,9 +36,7 @@ authcontroler.post("/register", async (req, res) => {
 
 
 authcontroler.get("/login", async (req, res) => {
-
     res.render('auth/login')
-
 
 });
 
