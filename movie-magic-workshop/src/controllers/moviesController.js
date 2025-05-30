@@ -10,10 +10,15 @@ const moviesController = express.Router();
 moviesController.get('/search',  async (req, res) => {
     const filter = req.query;
     console.log(filter)
+    try {
     const context = await movieService.getAll(filter).lean();
-
+    return res.render('search', {context})
+    } catch (err){
+        console.log(err)
+        res.redirect("/home")
+    }
     
-    res.render('search', {context})
+   
 })
 
 
@@ -39,18 +44,29 @@ moviesController.get('/create', isAuth, async (req, res) => {
 moviesController.post('/create', async (req, res) => {
     const movieData = req.body;
     const userID = req.user?.id;
-    const newMovie = await movieService.createMovie(movieData, userID)
-    // new Movie(movieData, userID)
+    try {
+        const newMovie = await movieService.createMovie(movieData, userID)
+        // new Movie(movieData, userID)
     res.redirect('/')
+    } catch (err){
+        console.log(err)
+        res.redirect(`movies/create`)
+    }
  
 });
 
 moviesController.get("/:movieId/attach-cast", isAuth, async (req, res) =>{
     const movieId = req.params.movieId;
 
-   const movie = await movieService.getOne(movieId)
-   const cast = await castservice.getAllCasts();
-   res.render('casts/cast-attach', {movie, cast})
+    try {
+    const movie = await movieService.getOne(movieId)
+    const cast = await castservice.getAllCasts();
+    res.render('casts/cast-attach', {movie, cast})
+    } catch (err){
+        console.log(err)
+        res.redirect('404')
+    }
+    
 
 
 });
@@ -59,11 +75,19 @@ moviesController.post("/:movieId/attach-cast", async (req, res) =>{
     const castId = req.body.cast;
     console.log(castId)
     const movieId = req.params.movieId;
+    try {
     const movie = await movieService.getOne(movieId)
     await movieService.addCastToMovie(movieId, castId);
+    return res.redirect(`/movies/details/${movieId}`)
+
+    } catch (err){
+        console.log(err)
+        res.redirect("/")
+    }
+        res.redirect(`/movies/${movieId}/details`)
 
    
-   res.redirect(`/movies/details/${movieId}/`)
+  
 
 
 });
@@ -72,13 +96,26 @@ moviesController.post("/:movieId/attach-cast", async (req, res) =>{
 moviesController.get("/:movieId/edit", isAuth, async (req, res) => {
 
     const user = req.user;
-    
     const movieId = req.params.movieId;
-    const movie = await movieService.getOne(movieId);
-    if (!movie.createdBy) {return res.redirect("/")}
-    if (!user || !movie.createdBy.equals(user.id)) {return res.redirect("/")};
+    try {
+        const movie = await movieService.getOne(movieId);
+        //for the previous data without owner:
+        if (!movie.createdBy) {
+            console.log("no owner")
+            return res.redirect("/")}
+        //TODO//    
+        if (!user || !movie.createdBy.equals(user.id)) {
+            console.log("not owner")
+            return res.redirect("/")};
+        res.render('movie/edit', {movie})
 
-    res.render('movie/edit', {movie})
+    } catch (err){
+        console.log(err)
+        res.redirect("/")
+    }
+   
+
+  
 });
 
 moviesController.post("/:movieId/edit", async (req, res) => {
@@ -92,7 +129,6 @@ moviesController.post("/:movieId/edit", async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-
     
     return res.redirect(`/movies/details/${movieId}`)
 
@@ -106,7 +142,9 @@ moviesController.get('/:movieId/delete', isAuth, async (req, res) => {
     const movie = await movieService.getOne(movieId);
     if (!movie.createdBy) {
             console.log("unauthorized 26355")
-            return res.redirect("/")};
+            
+            return res.redirect('/')
+    }
 
     if (!user || !movie.createdBy.equals(user.id)) {return res.redirect("/")};
      try { 
