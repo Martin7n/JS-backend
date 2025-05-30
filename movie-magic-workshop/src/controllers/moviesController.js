@@ -15,7 +15,7 @@ moviesController.get('/search',  async (req, res) => {
     return res.render('search', {context})
     } catch (err){
         console.log(err)
-        res.redirect("/home")
+        return res.redirect("/home")
     }
     
    
@@ -47,7 +47,7 @@ moviesController.post('/create', async (req, res) => {
     try {
         const newMovie = await movieService.createMovie(movieData, userID)
         // new Movie(movieData, userID)
-    res.redirect('/')
+        return res.redirect('/')
     } catch (err){
         console.log(err)
         res.redirect(`movies/create`)
@@ -61,10 +61,10 @@ moviesController.get("/:movieId/attach-cast", isAuth, async (req, res) =>{
     try {
     const movie = await movieService.getOne(movieId)
     const cast = await castservice.getAllCasts();
-    res.render('casts/cast-attach', {movie, cast})
+    return res.render('casts/cast-attach', {movie, cast})
     } catch (err){
         console.log(err)
-        res.redirect('404')
+        return res.redirect('404')
     }
     
 
@@ -82,12 +82,9 @@ moviesController.post("/:movieId/attach-cast", async (req, res) =>{
 
     } catch (err){
         console.log(err)
-        res.redirect("/")
+        return res.redirect("/")
     }
-        res.redirect(`/movies/${movieId}/details`)
 
-   
-  
 
 
 });
@@ -97,22 +94,24 @@ moviesController.get("/:movieId/edit", isAuth, async (req, res) => {
 
     const user = req.user;
     const movieId = req.params.movieId;
+
     try {
         const movie = await movieService.getOne(movieId);
-        //for the previous data without owner:
-        if (!movie.createdBy) {
-            console.log("no owner")
-            return res.redirect("/")}
-        //TODO//    
-        if (!user || !movie.createdBy.equals(user.id)) {
-            console.log("not owner")
-            return res.redirect("/")};
+                    //for the previous data without owner:
+                    if (!movie.createdBy) {
+                        console.log("no owner")
+                        return res.redirect("/")}
+                    //TODO//    
+            if (!user || !movie.createdBy.equals(user.id)) {
+                console.log("not owner")
+                return res.redirect("/")};
         res.render('movie/edit', {movie})
 
     } catch (err){
         console.log(err)
-        res.redirect("/")
+        return res.redirect("/")
     }
+    
    
 
   
@@ -149,13 +148,11 @@ moviesController.get('/:movieId/delete', isAuth, async (req, res) => {
     if (!user || !movie.createdBy.equals(user.id)) {return res.redirect("/")};
      try { 
         const movie = await movieService.deleteOne(movieId);
-        return res.redirect(`/`)
      } catch (err) {
         console.log(err)
      }
+     res.redirect(`/`)
 });
-
-
 
 
 
