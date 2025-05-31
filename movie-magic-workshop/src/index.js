@@ -61,7 +61,8 @@ app.engine('hbs', handlebars.engine({
         showRating(rating){
             return '★'.repeat(Math.floor(rating));
         }
-    }
+    },
+    layout: false
 }));
 app.set('view engine', 'hbs');
 app.set('views', './src/views');

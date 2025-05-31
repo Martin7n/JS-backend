@@ -1,0 +1,13 @@
+import { Router } from "express";
+import homeController from "../src/controllers/homeController.js"
+import authControler from "../src/controllers/authController.js"
+const routes = Router();
+
+routes.use(homeController);
+// routes.use(authControler
+// );
+
+
+console.log("test1")
+
+export default routes;

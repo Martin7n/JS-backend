@@ -49,12 +49,20 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 - [x] Add start and dev script node and node -watch
 2. Express
  - [x] Install `npm i express`
- - [x] Setup inital http server
+ - [x] Setup inital http server (with config file)
  - [ ] Add public resources (images, css...)
- - [ ] Add static middleware
- - [ ] Add body parser
- - [ ] Add routes modular router
- - [ ] Add home controller
+ - [x] Add static middleware - use: express.static
+ - [x] Add body parser - use: express.urlencoded
+ - [x] Add routes modular router
+ - [x] Add home controller
+ 3. Handlebars
+ - [x] Install `npm i express-handlebars`
+ - [x] Config handlebars as view engine
+ - [x] Setup home-layout-partial structure 
+ - [x] Enable mongo documents to be passed to the view => allowProtoPropertiesByDefault: true,
+ - [x] Change views directory
+ - [ ] Add resources to views folder
+
 
 ### TechStore website
 
