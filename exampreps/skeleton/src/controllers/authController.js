@@ -40,7 +40,11 @@ router.post("/login", (req, res) => {
 
 
 router.get("/logout", (req, res) => {
-    res.send("<h1>AuthOk</h1>")
+    if (req.user)
+    {   
+        res.clearCookie('auth');
+        res.redirect('/')
+    }
 });
 
 
