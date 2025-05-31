@@ -4,6 +4,7 @@ import handlebars from 'express-handlebars';
 
 import routes from './routes.js';
 import { SERVER_PORT, mongooseConnect } from './config.js';
+import { authMiddleware } from './middlewares/auth-middleware.js';
 
 
 const app = express();
@@ -26,6 +27,9 @@ app.set('view engine', 'hbs');
 app.set('views', './src/views');
 
 
+
 mongooseConnect("n");
+app.use(authMiddleware);
 app.use(routes);
+
 app.listen(SERVER_PORT, () => console.log(`Server is listening on http://localhost:${SERVER_PORT}....`));

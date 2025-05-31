@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export const SERVER_PORT = 3000
+export const JSON_WEBTOKEN = "alabala123982342u987874^@((^^ad";
 
 export const mongooseConnect = (dbName) =>
 {
@@ -15,4 +16,4 @@ export const mongooseConnect = (dbName) =>
     console.log(`DB Connection error ${err.message}`)
     };
 
-}
+};

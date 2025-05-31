@@ -3,12 +3,16 @@ import { Schema, model, Types } from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new Schema({
+    username: {
+            type: String,
+          
+    },
 
     email:{
-        type: String,
-        // minLength: [3, "At least 3 symbols"],
-        // lowercase: true,
-        // match: most used regex for emails :) 
+            type: String,
+            // minLength: [3, "At least 3 symbols"],
+            // lowercase: true,
+            // match: most used regex for emails :) 
     },
    password: {
         type: String,
@@ -19,10 +23,10 @@ const userSchema = new Schema({
 });
 
 
-// userSchema.pre("save", async function () {
-//     this.password = await bcrypt.hash(this.password, 10)
+userSchema.pre("save", async function () {
+    this.password = await bcrypt.hash(this.password, 10)
     
-// });
+});
 
 
 const User = model("User", userSchema);
