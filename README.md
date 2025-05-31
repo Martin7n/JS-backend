@@ -62,7 +62,24 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Enable mongo documents to be passed to the view => allowProtoPropertiesByDefault: true,
  - [x] Change views directory
  - [ ] Add resources to views folder
-
+4. Database
+ - [x] Install mongoose `npm i mongoose`
+ - [x] Setup db connection
+ - [x] Add user model - base email, password
+ 5. Register
+ - [x] Install bcrypt `npm i bcrypt`
+ - [x] Add bcrypt pre-save for User model
+ - [x] install jsonwebtoken `npm i jsonwebtoken`
+ - [ ] Fix navigation links
+ - [ ] Add register view
+ - [ ] Add authController
+ - [ ] Add register page
+ - [ ] Fix register form
+ - [ ] Add post register action
+ - [ ] Add authService with register
+ - [ ] Hash password
+ - [ ] Check confirmPassword
+ - [ ] Check if user exists
 
 ### TechStore website
 

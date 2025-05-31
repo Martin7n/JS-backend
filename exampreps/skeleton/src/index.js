@@ -3,7 +3,7 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 
 import routes from './routes.js';
-import { SERVER_PORT } from './config.js';
+import { SERVER_PORT, mongooseConnect } from './config.js';
 
 
 const app = express();
@@ -26,6 +26,6 @@ app.set('view engine', 'hbs');
 app.set('views', './src/views');
 
 
-
+mongooseConnect("n")
 app.use(routes)
 app.listen(SERVER_PORT, () => console.log(`Server is listening on http://localhost:${SERVER_PORT}....`));
