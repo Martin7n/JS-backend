@@ -10,7 +10,7 @@ const userSchema = new Schema({
 
     email:{
             type: String,
-            // minLength: [3, "At least 3 symbols"],
+            minLength: [3, "At least 3 symbols"],
             // lowercase: true,
             // match: most used regex for emails :) 
     },

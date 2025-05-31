@@ -13,6 +13,7 @@ export default {
         const email = await User.findOne({email: userData.email}, "email");
         console.log(email)
         if (email) {
+            console.log(email)
             throw new Error('Email already exists');
         }
 

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { JSON_WEBTOKEN_SECRET } from '../config.js';
+import { getErrorMessage } from '../utils/errorutils.js';
 
 
 
@@ -26,10 +27,10 @@ export const authMiddleware = (req, res, next) => {
 }
 
 export const isAuth = (req, res, next) => {
-        if (!req.user){
-            console.log("not auth")
-            return res.redirect('/auth/login');
-            }
+    if (!req.user){
+          
+        return res.redirect('/auth/login');
+    }
     next();
 };
 
