@@ -1,5 +1,6 @@
 import { Router } from "express";
 import authservice from "../services/authservice.js";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -26,16 +27,29 @@ router.post("/register", async (req, res) => {
         throw new Error(`Registry issue ${e}`)
     };
 
+    const token = await authService.login(email, password);
+    res.cookie('auth', token, { httpOnly: true });
+
     res.redirect("/")
 });
 
 
-router.get("/login", (req, res) => {
-    res.send("<h1>AuthOk</h1>")
+router.get("/login", async (req, res) => {
+        res.render('auth/login')
 });
 
-router.post("/login", (req, res) => {
-    res.send("<h1>AuthOk</h1>")
+router.post("/login", async (req, res) => {
+    const userData = req.body;
+
+    try{
+        const token = await authservice.login(userData);        
+        res.cookie('auth', token, { httpOnly: true });
+        res.redirect('/');
+
+    } catch (e) {
+        throw new Error(`Registry issue ${e}`)
+    };
+    res.redirect("/")
 });
 
 

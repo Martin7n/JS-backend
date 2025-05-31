@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export const SERVER_PORT = 3000
-export const JSON_WEBTOKEN = "alabala123982342u987874^@((^^ad";
+export const JSON_WEBTOKEN_SECRET = 'alabala123982342u987874ad';
 
 export const mongooseConnect = (dbName) =>
 {

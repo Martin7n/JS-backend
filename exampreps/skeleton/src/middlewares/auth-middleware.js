@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { JSON_WEBTOKEN } from '../config.js';
+import { JSON_WEBTOKEN_SECRET } from '../config.js';
 
 
 
@@ -7,11 +7,13 @@ export const authMiddleware = (req, res, next) => {
     
     const token = req.cookies['auth'];
     if (!token){
+
+        console.log("no token")
         return next()
     }
 
     try {
-        const decodedToken = jwt.verify(token, JSON_WEBTOKEN);
+        const decodedToken = jwt.verify(token, JSON_WEBTOKEN_SECRET);
         req.user = decodedToken;
         res.locals.user = decodedToken;
         next()
@@ -20,7 +22,7 @@ export const authMiddleware = (req, res, next) => {
         res.clearCookie('auth');
         res.redirect('/auth/login');
     }
-    next()
+   
 }
 
 export const isAuth = (req, res, next) => {
