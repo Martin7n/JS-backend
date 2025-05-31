@@ -35,6 +35,27 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 - [x] Render & process dynamic content upon request;
 - [x] Create funtionalities - adding objects and etc.
 - [x] Data persistanse (JSON first)
-- [ ] Data persistanse => MongoBD;
+- [x] Data persistanse => MongoBD/Mongoose;
+- [x] Usermanagment with bcrypt and jwt
 - [ ] others => swith to TypeScript probably;
-- [ ] On the go => project structure updates;
+- [x] On the go => project structure updates;
+
+
+## ExamPreps 
+### Skeleton to use: base project structure and functions
+1. Initialize project
+- [x] Initialize project npm init - yes;
+- [x] Change to module system;
+- [x] Add start and dev script node and node -watch
+2. Express
+ - [x] Install `npm i express`
+ - [x] Setup inital http server
+ - [ ] Add public resources (images, css...)
+ - [ ] Add static middleware
+ - [ ] Add body parser
+ - [ ] Add routes modular router
+ - [ ] Add home controller
+
+### TechStore website
+
+### Reicpes website
