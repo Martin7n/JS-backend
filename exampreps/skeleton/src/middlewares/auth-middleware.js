@@ -8,8 +8,6 @@ export const authMiddleware = (req, res, next) => {
     
     const token = req.cookies[AUTH_COOKIE_NAME];
     if (!token){
-
-        console.log("no token")
         return next()
     }
 

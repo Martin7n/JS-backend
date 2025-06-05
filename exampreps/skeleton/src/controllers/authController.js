@@ -17,15 +17,12 @@ router.get("/register",  (req, res) => {
 router.post("/register", async (req, res) => {
     const userData = req.body;
     const title = {title: "register"}
-    console.log(userData)
 
     try{
         await authservice.register(userData);
 
     } catch (err) {
-        const error = getErrorMessage(err);
-        console.log(error)
-        
+        const error = getErrorMessage(err);        
         return res.render('auth/register',  {error, user: userData, register} );
 
     };
