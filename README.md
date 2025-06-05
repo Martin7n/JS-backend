@@ -70,8 +70,8 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Install bcrypt `npm i bcrypt`
  - [x] Add bcrypt pre-save for User model
  - [x] install jsonwebtoken `npm i jsonwebtoken`
- - [ ] Fix navigation links
- - [ ] Add register view
+ - [x] Fix navigation links
+ - [x] Add register view
  - [x] Add authController
  - [x] Add register page
  - [x] Fix register form
