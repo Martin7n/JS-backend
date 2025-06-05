@@ -83,4 +83,12 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 
 ### TechStore website
 
+
+ - [x] Skeleton setup
+ - [x] Test - DB connection/ view / create
+ - [X] Resourses migration
+ - [X] Basic layout and partial views
+ - [ ] Models
+
+
 ### Reicpes website
