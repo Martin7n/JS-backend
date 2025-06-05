@@ -2,13 +2,13 @@ import { Router } from "express";
 import authservice from "../services/authservice.js";
 import jwt from "jsonwebtoken";
 import { getErrorMessage } from "../utils/errorutils.js";
+import { AUTH_COOKIE_NAME } from "../config.js";
 
 const router = Router();
 
 router.get("/register",  (req, res) => {
 
     res.render('auth/register')
-
 
 });
 
@@ -18,20 +18,21 @@ router.post("/register", async (req, res) => {
 
     console.log(userData)
 
-    // if (userData.password !== userData.repass)
-    // { throw new Error("Password and re-password are not the same.")}
-
     try{
         await authservice.register(userData);
 
     } catch (err) {
+        const error = getErrorMessage(err);
+        console.log(error)
         
-        return res.render('auth/register', { error: getErrorMessage(err) });
+        return res.render('auth/register',  {error, user: userData} );
 
     };
 
-    const token = await authservice.login(email, password);
-    res.cookie('auth', token, { httpOnly: true });
+     const token = await authservice.login(userData);
+        res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
+
+
 
     res.redirect("/")
 });
@@ -46,11 +47,11 @@ router.post("/login", async (req, res) => {
 
     try{
         const token = await authservice.login(userData);        
-        res.cookie('auth', token, { httpOnly: true });
+        res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         res.redirect('/');
 
-    } catch (e) {
-        throw new Error(`Registry issue ${e}`)
+    } catch (err) {
+        return res.render('auth/login', { error: getErrorMessage(err), user: userData });
     };
     res.redirect("/")
 });
@@ -59,13 +60,10 @@ router.post("/login", async (req, res) => {
 router.get("/logout", (req, res) => {
     if (req.user)
     {   
-        res.clearCookie('auth');
+        res.clearCookie(AUTH_COOKIE_NAME);
         res.redirect('/')
     }
 });
-
-
-
 
 
 export default router;

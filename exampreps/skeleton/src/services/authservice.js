@@ -10,8 +10,11 @@ export default {
 
     async register(userData){
 
+        if (userData.password !== userData.repass)
+            { throw new Error("Password and re-password are not the same.")}
+   
+
         const email = await User.findOne({email: userData.email}, "email");
-        console.log(email)
         if (email) {
             console.log(email)
             throw new Error('Email already exists');

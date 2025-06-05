@@ -72,14 +72,14 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] install jsonwebtoken `npm i jsonwebtoken`
  - [ ] Fix navigation links
  - [ ] Add register view
- - [ ] Add authController
- - [ ] Add register page
- - [ ] Fix register form
- - [ ] Add post register action
- - [ ] Add authService with register
- - [ ] Hash password
- - [ ] Check confirmPassword
- - [ ] Check if user exists
+ - [x] Add authController
+ - [x] Add register page
+ - [x] Fix register form
+ - [x] Add post register action
+ - [x] Add authService with register
+ - [x] Hash password
+ - [X] Check confirmPassword
+ - [x] Check if user exists
 
 ### TechStore website
 

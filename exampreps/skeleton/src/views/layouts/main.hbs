@@ -7,19 +7,30 @@
 </head>
 <body>
 
+    {{#if user}}
+    {{user.username}}
+
+    {{/if}}
+
+
     <nav>
+
         <ul>
         <li> <a href="/">Home</li>
         <li><a href="/randomLink">Not home</a></li>
+        {{#if isAuthenticated}}
+         <li><a href="/logout">logout</a></li>
+        {{else}}
         <li><a href="/register">register</a></li>
         <li><a href="/login">login</a></li>
-                <br>
-        <li><a href="/logout">logout</a></li>
-
+             {{/if}}
+            
+       
+       
 
         </ul>
     </nav>
-
+        {{error}}
         {{{body}}}
     
 </body>

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 export const SERVER_PORT = 3000
 export const JSON_WEBTOKEN_SECRET = 'alabala123982342u987874ad';
+export const AUTH_COOKIE_NAME = 'auth';
 
 export const mongooseConnect = (dbName) =>
 {
@@ -17,3 +18,5 @@ export const mongooseConnect = (dbName) =>
     };
 
 };
+
+
