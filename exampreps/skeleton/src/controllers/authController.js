@@ -7,15 +7,16 @@ import { AUTH_COOKIE_NAME } from "../config.js";
 const router = Router();
 
 router.get("/register",  (req, res) => {
+    const title = {title: "register"}
 
-    res.render('auth/register')
+    res.render('auth/register', title)
 
 });
 
 
 router.post("/register", async (req, res) => {
     const userData = req.body;
-
+    const title = {title: "register"}
     console.log(userData)
 
     try{
@@ -25,7 +26,7 @@ router.post("/register", async (req, res) => {
         const error = getErrorMessage(err);
         console.log(error)
         
-        return res.render('auth/register',  {error, user: userData} );
+        return res.render('auth/register',  {error, user: userData, register} );
 
     };
 
