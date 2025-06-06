@@ -89,7 +89,7 @@ router.post("/create",  async (req, res) => {
     }
 
 
-    res.render("devices/create", {device})
+    res.redirect("/devices/catalog")
 
 
 
