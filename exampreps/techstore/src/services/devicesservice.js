@@ -31,11 +31,11 @@ export default {
             return Device.findById(itemId);
         },
     
-        create(data){
+        create(data, userId){
             if ( !data.brand){ 
                 throw new Error("Error22345678")}
     
-            return Device.create(data)
+            return Device.create({...data, owner: userId})
         },
     
         edit(itemID, itemData){

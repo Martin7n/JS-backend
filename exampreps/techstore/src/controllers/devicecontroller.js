@@ -78,9 +78,10 @@ router.get("/create", (req, res) => {
 
 router.post("/create",  async (req, res) => {
     const device = req.body;
+    const userId = req.user.id
 
     try{
-        await devicesservice.create(device);
+        await devicesservice.create(device, userId);
 
     } catch(err) {
         const error = getErrorMessage(err);
