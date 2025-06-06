@@ -21,6 +21,10 @@ export default {
             
             return query
         },
+
+        getLasttripple(numberOfObj){
+            return Device.find({}).sort({created_at: 'desc'}).limit(numberOfObj)
+        },
     
     
         getOne(itemId){

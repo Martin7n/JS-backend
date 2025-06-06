@@ -5,8 +5,8 @@ import devicesservice from "../services/devicesservice.js";
 const router = Router();
 
 router.get("/", async (req, res) => {
-
-    const device = await devicesservice.getAll()
+    const numberOfObj = 3;
+    const device = await devicesservice.getLasttripple(numberOfObj)
     const user = req.user;
     console.log(user)
     res.render("home", {device, user}, )

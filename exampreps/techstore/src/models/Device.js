@@ -103,7 +103,10 @@ const devicelSchema = new Schema({
                 }
   },
     
-});
+},
+  {
+    timestamps: true,
+  });
 
 
 const Device = model("Device", devicelSchema);
