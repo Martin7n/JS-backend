@@ -7,8 +7,9 @@ const router = Router();
 router.get("/", async (req, res) => {
 
     const device = await devicesservice.getAll()
-    console.log(req.user)
-    res.render("home", {device})
+    const user = req.user;
+    console.log(user)
+    res.render("home", {device, user}, )
     // res.render("home", {layout: false})
 });
 

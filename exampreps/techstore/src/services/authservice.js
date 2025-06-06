@@ -35,7 +35,7 @@ export default {
 
         const payload = {
             id: user.id,
-            username: user.username,
+            username: user.name,
             email: user.email,
         };  
         
