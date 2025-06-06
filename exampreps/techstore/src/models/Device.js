@@ -24,12 +24,12 @@ const devicelSchema = new Schema({
         minLength: [5, "At least $characters"]
     }, 
     // should be at least 5 characters
-    hard:{
+    hardDisk:{
         type: String,
         minLength: [5, "At least $characters"]
     },
     //  Disk should be at least 5 characters
-    screen:{
+    screenSize:{
         type: String,
         minLength: [1, "At least $characters"]
     },
@@ -39,7 +39,7 @@ const devicelSchema = new Schema({
         minLength: [2, "At least $characters"]
     }, 
     // should be at least 2 characters
-    operatingsystem:{
+    operatingSystem:{
         type: String,
         minLength: [5, "At least $characters"],
         maxLength: [20, "No more than $characters"]
