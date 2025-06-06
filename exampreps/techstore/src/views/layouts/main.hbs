@@ -9,10 +9,7 @@
 
     
 
-    {{#if user}}
-    {{user.username}}
 
-    {{/if}}
 
 <body>
     <header>
@@ -20,14 +17,24 @@
             <h1>TechStore</h1>
             <nav>
                 <ul>
+                      
+    
+
+   
                     <li><a href="/">Home</a></li>
                     <li><a href="#">Catalog</a></li>
+                    <li><a href="#">About</a></li>
+                  
+                     {{#if user}}
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Create Offer</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
                     <li><a href="#">Logout</a></li>
+                    {{else}}
+                      <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                     {{/if}}
+  
+                    
                 </ul>
             </nav>
         </div>
@@ -42,23 +49,6 @@
     {{/if}}
 
 
-    <nav>
-
-        <ul>
-        <li> <a href="/">Home</li>
-        <li><a href="/main">Not home</a></li>
-        {{#if isAuthenticated}}
-         <li><a href="/logout">logout</a></li>
-        {{else}}
-        <li><a href="/register">register</a></li>
-        <li><a href="/login">login</a></li>
-             {{/if}}
-            
-       
-       
-
-        </ul>
-    </nav>
         {{error}}
         {{{body}}}
 
