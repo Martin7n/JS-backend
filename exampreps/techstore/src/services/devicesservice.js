@@ -28,7 +28,7 @@ export default {
         },
     
         create(data){
-            if ( !data.name){ 
+            if ( !data.brand){ 
                 throw new Error("Error22345678")}
     
             return Device.create(data)
