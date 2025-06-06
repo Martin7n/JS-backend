@@ -2,9 +2,23 @@
 
 
  {{>hero}}
- 
 
- {{>card}}
+
+     <section class="products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+ 
+        {{#each device}}
+        {{>card}}
+
+        {{else}}
+                        <p class="no-post">There haven't been any devices posted yet.</p>
+
+        {{/each}}
+            </div>
+        </div>
+         </section>
    
 
 

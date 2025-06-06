@@ -7,23 +7,21 @@ import { AUTH_COOKIE_NAME } from "../config.js";
 const router = Router();
 
 router.get("/register",  (req, res) => {
-    const title = {title: "register"}
-
-    res.render('auth/register', title)
+     
+    res.render('auth/register')
 
 });
 
 
 router.post("/register", async (req, res) => {
     const userData = req.body;
-    const title = {title: "register"}
 
     try{
         await authservice.register(userData);
 
     } catch (err) {
         const error = getErrorMessage(err);        
-        return res.render('auth/register',  {error, user: userData, register} );
+        return res.render('auth/register',  {error, user: userData} );
 
     };
 

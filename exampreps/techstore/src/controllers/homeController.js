@@ -1,11 +1,14 @@
 import { Router } from "express";
 import { isAuth } from "../middlewares/auth-middleware.js";
+import devicesservice from "../services/devicesservice.js";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+
+    const device = await devicesservice.getAll()
     console.log(req.user)
-    res.render("home")
+    res.render("home", {device})
     // res.render("home", {layout: false})
 });
 

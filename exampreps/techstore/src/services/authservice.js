@@ -6,8 +6,6 @@ import jwt from "jsonwebtoken";
 
 export default {
 
-
-
     async register(userData){
 
         if (userData.password !== userData.repass)
