@@ -13,6 +13,7 @@ router.get("/catalog", async (req, res) => {
         return res.render("devices/catalog", {devices})
 
     } catch(err) {
+         const error = getErrorMessage(err);
         return res.render("devices/catalog", {error})
 
     };  
@@ -29,6 +30,43 @@ router.get("/details/:deviceId", async (req, res) => {
 
 
 });
+
+
+router.get("/edit/:deviceId", async (req, res) => {
+
+    const deviceId = req.params.deviceId;
+
+    try{
+
+        const device = await devicesservice.getOne(deviceId);
+        // throw new Error("no such device")
+        return res.render("devices/edit", {device})
+
+    } catch(err){
+        const error = getErrorMessage(err);        
+        return res.render("devices/edit", {error})
+    }
+
+});
+
+router.post("/edit/:deviceId", async (req, res) => {
+    const deviceId = req.params.deviceId;
+    const device = req.body;
+
+    try {
+
+        console.log(deviceId,  device)
+        await devicesservice.edit(deviceId, device);
+
+    } catch(err){
+        const error = getErrorMessage(err)
+
+        return res.render("devices/edit", {device, error})
+    }
+
+    res.redirect("/devices/catalog")
+});
+
 
 
 
