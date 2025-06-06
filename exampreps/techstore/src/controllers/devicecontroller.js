@@ -5,6 +5,34 @@ import devicesservice from "../services/devicesservice.js";
 
 const router = Router();
 
+
+router.get("/catalog", async (req, res) => {
+
+    try {
+        const devices = await devicesservice.getAll();
+        return res.render("devices/catalog", {devices})
+
+    } catch(err) {
+        return res.render("devices/catalog", {error})
+
+    };  
+
+});
+
+router.get("/details/:deviceId", async (req, res) => {
+
+    const deviceId = req.params.deviceId;
+
+    const device = await devicesservice.getOne(deviceId);
+
+    res.render("devices/details", {device})
+
+
+});
+
+
+
+
 router.get("/create", (req, res) => {
     res.render("devices/create")
 
