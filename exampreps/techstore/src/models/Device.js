@@ -80,10 +80,16 @@ const devicelSchema = new Schema({
         return /^https?:\/\//.test(v);  
       },
       message: props => `'${props.value}' is not a valid URL. Must start with http:// or https://`
-    }
-  }
-    
-   
+    },
+    preferredList: [{
+                    type:Types.ObjectId,
+                    ref: "User"
+                }],
+    owner: {
+                    type:Types.ObjectId,
+                    ref: "User"
+                }
+  },
     
 });
 
