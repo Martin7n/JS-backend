@@ -15,7 +15,6 @@ router.get("/catalog", async (req, res) => {
     } catch(err) {
          const error = getErrorMessage(err);
         return res.render("devices/catalog", {error})
-
     };  
 
 });
@@ -27,8 +26,9 @@ router.get("/details/:deviceId", async (req, res) => {
    
     const device = await devicesservice.getOne(deviceId);
     const isOwner = device.owner.equals(userId);
+    const isPreffered = device.preferredList.includes(userId)
 
-    res.render("devices/details", {device, isOwner})
+    res.render("devices/details", {device, isOwner, isPreffered})
 
 
 });
@@ -62,6 +62,7 @@ router.post("/edit/:deviceId", isAuth, async (req, res) => {
 
         console.log(deviceId,  device)
         await devicesservice.edit(deviceId, device);
+        return res.redirect("/devices/catalog")
 
     } catch(err){
         const error = getErrorMessage(err)
@@ -69,7 +70,7 @@ router.post("/edit/:deviceId", isAuth, async (req, res) => {
         return res.render("/devices/edit", {device, error})
     }
 
-    res.redirect("/devices/catalog")
+        res.redirect("/devices/catalog")
 });
 
 
@@ -98,6 +99,26 @@ router.post("/create",  isAuth, async (req, res) => {
     res.redirect("/devices/catalog")
 
 });
+
+
+router.get("/preffer/:deviceId", isAuth, async (req, res) =>{
+    
+    const deviceId = req.params.deviceId;
+    const userId = req.user.id
+
+    try {
+        await devicesservice.preffer(deviceId, userId);
+    
+        res.redirect(`/devices/details/${deviceId}`)
+        
+    } catch (err){
+        const error = getErrorMessage(err)
+            return res.render("404", {error})
+
+    }
+    res.redirect(`/details/${deviceId}`)
+
+})
 
 
 
