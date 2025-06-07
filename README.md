@@ -88,7 +88,12 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Test - DB connection/ view / create
  - [X] Resourses migration
  - [X] Basic layout and partial views
- - [ ] Models
+ - [ ] Models and models field/validation/
+ - [ ] Login, Register, Logout
+ - [x] Create device, edit device, devices catalog pages 
+ - [ ] Preffered devices funtionalities 
+ - [ ] Security - path guards and additional validations  
+ - [ ] Error setter/error state of the requests/
 
 
 ### Reicpes website
