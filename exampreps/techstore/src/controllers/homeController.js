@@ -6,7 +6,8 @@ const router = Router();
 
 router.get("/", async (req, res) => {
     const numberOfObj = 3;
-    const device = await devicesservice.getLasttripple(numberOfObj)
+    const sorting = "desc"
+    const device = await devicesservice.getLasttripple(numberOfObj, sorting)
     const user = req.user;
     console.log(user)
     res.render("home", {device, user}, )

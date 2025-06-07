@@ -8,20 +8,15 @@ const router = Router();
 router.get("/", async (req, res) => {
 
     try {
-
         const data = await mainmodservice.getAll()
         console.log(data)
         return res.render("main/mainp", {data})
 
     } catch (err){
-
         const error = getErrorMessage(err)
         return res.render("main/mainp", {error})
 
-    }
-
-    res.render("main/mainp", data)
-    
+    }    
 
 });
 

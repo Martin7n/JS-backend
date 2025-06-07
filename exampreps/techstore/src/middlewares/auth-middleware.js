@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { AUTH_COOKIE_NAME, JSON_WEBTOKEN_SECRET } from '../config.js';
 import { getErrorMessage } from '../utils/errorutils.js';
+import devicesservice from '../services/devicesservice.js';
 
 
 
@@ -40,6 +41,21 @@ export const isGuest = (req, res, next) => {
     if (req.user){
           
 res.setError("You are already logged in");
+        return res.redirect("/")    }
+    next();
+};
+
+
+
+export const isOwner = async (req, res, next) => {
+    
+        const deviceId = req.params.deviceId;
+        const userId = req.user.id
+        const device = await devicesservice.getOne(deviceId);
+        const isOwner = device.owner.equals(userId);
+
+        if (!isOwner){
+        res.setError("You are not owner");
         return res.redirect("/")    }
     next();
 };

@@ -3,7 +3,7 @@ import { Schema, model, Types } from "mongoose";
 import { minMaxLenValidator } from "../utils/validators.js";
 
 
-const devicelSchema = new Schema({
+const deviceSchema = new Schema({
     brand:          { type: String, required: true, validate: minMaxLenValidator(3),}, 
     model:          { type: String, required: true, validate: minMaxLenValidator(5),}, 
     hardDisk:       { type: String, required: true, validate: minMaxLenValidator(5),},
@@ -19,16 +19,17 @@ const devicelSchema = new Schema({
                     {validator: function (v) { return /^https?:\/\//.test(v);},
                     message: props => 
                     `'${props.value}' is not a valid URL. Must start with http:// or https://`
-                    },
+                    }},
     preferredList: [{ type:Types.ObjectId, ref: "User"}],
-    owner:         {  type:Types.ObjectId, ref: "User"}},
-    
-},
-  { timestamps: true, }
-);
+    owner:         { type: Types.ObjectId, ref: "User", required: true }
+      },
+      {
+        timestamps: true
+      }
+    );
 
 
-const Device = model("Device", devicelSchema);
+const Device = model("Device", deviceSchema);
 
 
 

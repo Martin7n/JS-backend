@@ -23,33 +23,38 @@ router.get("/catalog", async (req, res) => {
 router.get("/details/:deviceId", async (req, res) => {
 
     const deviceId = req.params.deviceId;
-
+    const userId = req.user.id
+   
     const device = await devicesservice.getOne(deviceId);
+    const isOwner = device.owner.equals(userId);
 
-    res.render("devices/details", {device})
+    res.render("devices/details", {device, isOwner})
 
 
 });
 
 
-router.get("/edit/:deviceId", async (req, res) => {
+router.get("/edit/:deviceId", isAuth, async (req, res) => {
 
     const deviceId = req.params.deviceId;
+    const userId = req.user.id
 
     try{
 
         const device = await devicesservice.getOne(deviceId);
-        // throw new Error("no such device")
+        const isOwner = device.owner.equals(userId);
+        if (!isOwner) {throw new Error("Unauthorized")}
+       
         return res.render("devices/edit", {device})
 
     } catch(err){
         const error = getErrorMessage(err);        
-        return res.render("devices/edit", {error})
+        return res.redirect("/")
     }
 
 });
 
-router.post("/edit/:deviceId", async (req, res) => {
+router.post("/edit/:deviceId", isAuth, async (req, res) => {
     const deviceId = req.params.deviceId;
     const device = req.body;
 
@@ -61,7 +66,7 @@ router.post("/edit/:deviceId", async (req, res) => {
     } catch(err){
         const error = getErrorMessage(err)
 
-        return res.render("devices/edit", {device, error})
+        return res.render("/devices/edit", {device, error})
     }
 
     res.redirect("/devices/catalog")
@@ -71,17 +76,18 @@ router.post("/edit/:deviceId", async (req, res) => {
 
 
 
-router.get("/create", (req, res) => {
+router.get("/create", isAuth, (req, res) => {
     res.render("devices/create")
 
 });
 
-router.post("/create",  async (req, res) => {
+router.post("/create",  isAuth, async (req, res) => {
     const device = req.body;
     const userId = req.user.id
 
     try{
         await devicesservice.create(device, userId);
+        console.log("userId:", userId);
 
     } catch(err) {
         const error = getErrorMessage(err);
@@ -90,8 +96,6 @@ router.post("/create",  async (req, res) => {
 
 
     res.redirect("/devices/catalog")
-
-
 
 });
 

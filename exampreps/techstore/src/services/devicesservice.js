@@ -22,8 +22,8 @@ export default {
             return query
         },
 
-        getLasttripple(numberOfObj){
-            return Device.find({}).sort({created_at: 'desc'}).limit(numberOfObj)
+        getLasttripple(numberOfObj, sorting){
+            return Device.find({}).sort({created_at: sorting}).limit(numberOfObj)
         },
     
     
