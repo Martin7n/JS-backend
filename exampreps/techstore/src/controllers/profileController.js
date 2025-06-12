@@ -6,7 +6,7 @@ import devicesservice from "../services/devicesservice.js";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", isAuth, async (req, res) => {
     
    
     if (!req.user?.id){
