@@ -3,12 +3,14 @@ import homeController from "../src/controllers/homeController.js"
 import authControler from "../src/controllers/authController.js"
 import maincontentcontroller from "../src/controllers/maincontentcontroller.js"
 import devicecontroller from "../src/controllers/devicecontroller.js"
+import profileController from "../src/controllers/profileController.js"
 const routes = Router();
 
 routes.use(homeController);
 routes.use(authControler);
 routes.use("/main", maincontentcontroller);
 routes.use("/devices", devicecontroller);
+routes.use("/profile", profileController);
 
 
 // );

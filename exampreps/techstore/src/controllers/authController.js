@@ -49,7 +49,7 @@ router.post("/login", async (req, res) => {
     } catch (err) {
         return res.render('auth/login', { error: getErrorMessage(err), user: userData });
     };
-    res.redirect("/")
+    
 });
 
 
@@ -62,11 +62,6 @@ router.get("/logout", (req, res) => {
 });
 
 
-router.get("/profile", async (req, res) =>{
 
-
-    res.render("profile");
-
-})
 
 export default router;

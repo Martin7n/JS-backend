@@ -2,10 +2,9 @@ import User from "../models/User.js";
 
 export default {
 
-    getProfileDetails(userId,){
+    getProfileDetails(userId){
 
         return User.findById(userId)
-
 
     },
 
