@@ -88,12 +88,23 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Test - DB connection/ view / create
  - [X] Resourses migration
  - [X] Basic layout and partial views
- - [ ] Models and models field/validation/
- - [ ] Login, Register, Logout
+ - [x] Models and models field/validation/
+ - [x] Login, Register, Logout - pages, services, controllers;
+ - [x] Catalog page with partial obj.rendering
  - [x] Create device, edit device, devices catalog pages 
- - [ ] Preffered devices funtionalities 
- - [ ] Security - path guards and additional validations  
- - [ ] Error setter/error state of the requests/
+ - [x] Preffered devices funtionalities 
+ - [x] Security - path guards and additional validations  
+ - [x] Error setter/error state of the requests/
+ - [x] Profile page with functionalities (created/prefered)
 
+### Recipes website
+- [ ] ToDo later. 
 
-### Reicpes website
+### Cosmic Explorer  **New ExamPrep** 
+ - [x] Skeleton setup - npm init, skeleton import and update, npm i for the libraries.
+ - [x] Test - DB connection/ view / create and new DB.
+ - [ ] Resourses migration
+ - [ ] Static pages
+ - [ ] Home page setup
+ - [ ] Models and models field/validation/
+ - [ ] Login, Register, Logout - pages, services, controllers;
