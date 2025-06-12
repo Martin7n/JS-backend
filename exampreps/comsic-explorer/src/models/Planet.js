@@ -1,6 +1,6 @@
 
 import { Schema, model, Types } from "mongoose";
-import { minMaxLenValidator } from "../utils/validators";
+import { minMaxLenValidator } from "../utils/validators.js";
 
 
 
@@ -28,4 +28,4 @@ const planetSchema = new Schema({
 
 const Planet = model("Planet", planetSchema);
 
-export default Planet
+export default Planet;
