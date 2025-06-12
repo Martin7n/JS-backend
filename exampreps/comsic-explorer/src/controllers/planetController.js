@@ -102,16 +102,16 @@ router.get("/edit/:planetId", async (req, res) => {
 });
 router.post("/edit/:planetId", async (req, res) => {
     const planetId = req.params.planetId;
-    const planet = req.body;
+    const data = req.body;
 
     try { 
-        await planetService.updatePlanet(planetId, planet )
+        await planetService.updatePlanet(planetId, data)
 
         res.redirect("/planet/catalog")
 
     } catch(err){
         const error = getErrorMessage(err);
-        res.redirect(`planet/edit/${planetId}`)
+        return res.render('planets/edit', {data: data, error})
     }
 
 
