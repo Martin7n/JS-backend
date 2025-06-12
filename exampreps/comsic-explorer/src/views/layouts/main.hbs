@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planet Catalog</title>
+    <title>{{#if title}} {{title}} {{else}} Planet - Explorer {{/if}}</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
@@ -30,6 +30,15 @@
     </header>
     <main>
 
+            {{#if error}}
+        <div>
+        <div class="errorContainer">
+            <p>{{error}}</p>
+        
+        </div>
+    </div>
+    {{/if}}
+
 
  
 
@@ -40,7 +49,7 @@
 
 
   
-        {{error}}
+       
         {{{body}}}
     
 

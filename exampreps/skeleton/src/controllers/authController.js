@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
 
     } catch (err) {
         const error = getErrorMessage(err);        
-        return res.render('auth/register',  {error, user: userData, register} );
+        return res.render('auth/register',  {error, user: userData, title} );
 
     };
 

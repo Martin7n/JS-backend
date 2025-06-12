@@ -9,7 +9,7 @@ const router = Router();
 router.get("/register",  (req, res) => {
     const title = {title: "register"}
 
-    res.render('auth/register', title)
+    res.render('auth/register')
 
 });
 
@@ -22,8 +22,8 @@ router.post("/register", async (req, res) => {
         await authservice.register(userData);
 
     } catch (err) {
-        const error = getErrorMessage(err);        
-        return res.render('auth/register',  {error, user: userData, register} );
+        const error = getErrorMessage(err); 
+        return res.render('auth/register',  {error, user: userData, title} );
 
     };
 

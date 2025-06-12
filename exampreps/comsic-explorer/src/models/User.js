@@ -7,20 +7,20 @@ import { minMaxLenValidator } from "../utils/validators.js";
 const userSchema = new Schema({
     username: { 
                 type: String, 
-                validate: minMaxLenValidator(2, 3), 
+                validate: minMaxLenValidator(2, 20), 
                 required: true },
 
     email:{ 
-                type: String, validate:  minMaxLenValidator(3, 5), 
+                type: String, validate:  minMaxLenValidator(3, 20), 
                 required: true, 
                 lowercase: true, 
-                match: /\@[a-zA-Z]+.[a-zA-Z]+$/,
+                // match: /\@[a-zA-Z]+.[a-zA-Z]+$/,
 
     },
    password: { 
                 type: String,
                 required: true,  
-                validate: minMaxLenValidator(3, 5), 
+                validate: minMaxLenValidator(3, 20), 
                 trim: true, match: /^\w+$/, 
              }
 },
