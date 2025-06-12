@@ -1,26 +1,34 @@
 
 import { Schema, model, Types } from "mongoose";
 import bcrypt from "bcrypt";
+import { minMaxLenValidator } from "../utils/validators.js";
+
 
 const userSchema = new Schema({
-    username: {
-            type: String,
-          
-    },
+    username: { 
+                type: String, 
+                validate: minMaxLenValidator(2, 3), 
+                required: true },
 
-    email:{
-            type: String,
-            minLength: [3, "At least 3 symbols"],
-            // lowercase: true,
-            // match: most used regex for emails :) 
+    email:{ 
+                type: String, validate:  minMaxLenValidator(3, 5), 
+                required: true, 
+                lowercase: true, 
+                match: /\@[a-zA-Z]+.[a-zA-Z]+$/,
+
     },
-   password: {
-        type: String,
-        // minLength: [6, "Minimum password lenght: 8 symbols"],
-        trim: true,
-    }    
-    
-});
+   password: { 
+                type: String,
+                required: true,  
+                validate: minMaxLenValidator(3, 5), 
+                trim: true, match: /^\w+$/, 
+             }
+},
+      {
+        timestamps: true
+      }
+
+);
 
 
 userSchema.pre("save", async function () {
