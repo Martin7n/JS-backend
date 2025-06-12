@@ -1,0 +1,44 @@
+
+
+
+
+<div class="search-form-container">
+            <form id="searchForm" class="search-form" method="POST">
+                <label for="name">Planet Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter planet name">
+
+                <label for="solarSystem">Solar System:</label>
+                <input type="text" id="solarSystem" name="solarSystem" placeholder="Enter solar system">
+
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        {{#each data}}
+
+        <div id="searchResults" class="search-results hidden">
+            <h2>Matching Planets:</h2>
+            <!-- Sample result - dynamically generated -->
+            <div class="planet-result">
+                <img src="{{image}}" alt="Planet X" class="planet-img">
+                <div class="planet-info">
+                    <p><strong>Name:</strong> {{name}}</p>
+                    <p><strong>Solar System:</strong> {{solarSystem}}</p>
+                    <a class="detail-btn" href="/planet/details/{{id}}">Details</a>
+                </div>
+            </div>
+            {{!-- <div class="planet-result">
+                <img src="https://cdn.pixabay.com/photo/2022/06/29/15/25/jupiter-7291995_1280.jpg" alt="Planet X" class="planet-img">
+                <div class="planet-info">
+                    <p><strong>Name:</strong> Jupiter</p>
+                    <p><strong>Solar System:</strong> Milky Way</p>
+                    <a class="detail-btn" href="#">Details</a>
+                </div>
+            </div> --}}
+            {{else}}
+
+            <p class="no-matches">There are no planets found yet!</p>
+
+            
+        </div>
+        {{/each}}
