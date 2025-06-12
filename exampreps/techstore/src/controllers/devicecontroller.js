@@ -22,6 +22,10 @@ router.get("/catalog", async (req, res) => {
 router.get("/details/:deviceId", async (req, res) => {
 
     const deviceId = req.params.deviceId;
+    if (!req.user?.id){
+        return res.render("home", {error: "unauth"})
+    }
+
     const userId = req.user.id
    
     const device = await devicesservice.getOne(deviceId);

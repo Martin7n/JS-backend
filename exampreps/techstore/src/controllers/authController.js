@@ -62,4 +62,11 @@ router.get("/logout", (req, res) => {
 });
 
 
+router.get("/profile", async (req, res) =>{
+
+
+    res.render("profile");
+
+})
+
 export default router;

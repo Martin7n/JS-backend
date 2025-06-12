@@ -22,4 +22,9 @@ router.get("/aaa", isAuth, (req, res) => {
 });
 
 
+router.get("/about", (req, res) =>{
+    res.render('about')
+})
+
+
 export default router;  
