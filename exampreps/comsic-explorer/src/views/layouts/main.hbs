@@ -1,11 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Page{{#if title}} {{title}} {{/if}} </title>
+    <title>Planet Catalog</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/catalog">Catalog</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Create</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+
+           
+        {{>nav}}
+         
+    </header>
+    <main>
+
+
+ 
 
     {{#if user}}
     {{user.username}}
@@ -13,33 +39,18 @@
     {{/if}}
 
 
-    <nav>
-
-        <ul>
-        <li> <a href="/">Home</li>
-        <li><a href="/main">Not home</a></li>
-        {{#if isAuthenticated}}
-         <li><a href="/logout">logout</a></li>
-        {{else}}
-        <li><a href="/register">register</a></li>
-        <li><a href="/login">login</a></li>
-             {{/if}}
-            
-       
-       
-
-        </ul>
-    </nav>
+  
         {{error}}
         {{{body}}}
     
+
+  
+
+    </main>
+    <footer>
+        <p>© 2024 Space Explorers. All rights reserved.</p>
+    </footer>
 </body>
 
-<footer> 
-    <div>
-
-        <b>Footer</b>
-
-    </div>
-</footer>
 </html>
+
