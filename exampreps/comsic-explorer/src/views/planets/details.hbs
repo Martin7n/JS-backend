@@ -1,0 +1,25 @@
+
+
+
+
+ <div class="planet-details">
+            <img src="{{data.image}}" alt="Alpha Centauri Bb" class="planet-image">
+            <div class="planet-info">
+                <h2>Name: {{data.name}}</h2>
+                <p><strong>Age:</strong>{{data.age}}</p>
+                <p><strong>Solar System:</strong> {{data.solarSystem}}</p>
+                <p><strong>Type:</strong> {{data.type}}</p>
+                <p><strong>Moons:</strong> {{data.moons}}</p>
+                <p><strong>Size:</strong> {{data.size}}</p>
+                <p><strong>Rings:</strong> {{data.rings}}</p>
+                <p><strong>Description:</strong> {{data.description}}</p>
+            </div>
+
+            <div class="actions">
+                <a id="like-button" class="like-btn" href="/planet/like/{{data.id}}">Like</a>
+                <a class="edit-btn" href="/planet/edit/{{data.id}}">Edit</a>
+                <a class="delete-btn" href="/planet/delete/{{data.id}}">Delete</a>
+            </div>
+            <p id="liked-message" class="liked-message hidden">You've already liked this planet.</p>
+        </div>
+</div>

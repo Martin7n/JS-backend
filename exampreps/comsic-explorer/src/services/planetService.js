@@ -26,7 +26,18 @@ export default {
 
         return Planet.create({...data, owner: userId});
 
-    }
+    },
+
+    getOneDetails(planetId){
+
+        return Planet.findById(planetId);
+
+    },
+
+    updatePlanet(planetId, data){
+
+        return Planet.findByIdAndUpdate(planetId, data, { runValidators: true});
+    },
 
 
 };

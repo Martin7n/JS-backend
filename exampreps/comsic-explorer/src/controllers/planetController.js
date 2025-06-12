@@ -67,6 +67,59 @@ router.post("/search", async (req,res) => {
 });
 
 
+router.get("/details/:planetId", async (req, res) => {
+    
+    const planetId = req.params.planetId;
+
+    try {
+        const data = await planetService.getOneDetails(planetId)
+        res.render("planets/details", {data})
+
+    } catch(err) {
+        const error = getErrorMessage(err)
+        return res.redirect("/", {error})
+
+    }
+
+});
+
+
+router.get("/edit/:planetId", async (req, res) => {
+
+    const planetId = req.params.planetId;
+
+    try {
+        const data = await planetService.getOneDetails(planetId)
+        res.render("planets/edit", {data})
+
+    } catch(err) {
+        const error = getErrorMessage(err)
+        return res.redirect("/", {error})
+
+    }
+
+
+});
+router.post("/edit/:planetId", async (req, res) => {
+    const planetId = req.params.planetId;
+    const planet = req.body;
+
+    try { 
+        await planetService.updatePlanet(planetId, planet )
+
+        res.redirect("/planet/catalog")
+
+    } catch(err){
+        const error = getErrorMessage(err);
+        res.redirect(`planet/edit/${planetId}`)
+    }
+
+
+});
+
+
+
+
 
 
 
