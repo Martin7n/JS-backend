@@ -101,10 +101,15 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 - [ ] ToDo later. 
 
 ### Cosmic Explorer  **New ExamPrep** 
- - [x] Skeleton setup - npm init, skeleton import and update, npm i for the libraries.
- - [x] Test - DB connection/ view / create and new DB.
- - [ ] Resourses migration
- - [ ] Static pages
- - [ ] Home page setup
- - [ ] Models and models field/validation/
- - [ ] Login, Register, Logout - pages, services, controllers;
+ - [x] Skeleton setup - npm init, skeleton import and update, npm i for the libraries;
+ - [x] Test - DB connection/ view / create and new DB;
+ - [x] Resourses migration;
+ - [x] Static pages;
+ - [x] Home page setup;
+ - [x] Models and models field/validation/;
+ - [x] Login, Register, Logout - pages, services, controllers;
+ - [x] Catalog page;
+ - [x] Create/Details/Edit;
+ - [ ] Like functionalities;
+ - [ ] Path guards;
+ - [ ] Dynamic navigations and access;
