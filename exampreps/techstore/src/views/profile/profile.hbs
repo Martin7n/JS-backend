@@ -1,26 +1,16 @@
 
-
+    {{#if profile}}
     <section class="profile-hero">
         <div class="container">
             <h2>User Profile</h2>
-            <p>Welcome back, <span id="username">John Doe</span> <strong id="email">( john.doe@example.com )</strong></p>
+            <p>Welcome back, <span id="username">{{profile. name}}</span> <strong id="email">( {{profile.email}} )</strong></p>
         </div>
     </section>
-
-    {{#if profile}}
-    <h1> {{profile.email}}</h1>
-    {{else}}
-        <h1>zzzzzzzzzzzz</h1>
-
     {{/if}}
 
 
 
 
-        {{#each preferedDevices}}
-        {{cpu}}
-
-    {{/each}}
 
         {{#each createdDevices}}
     <section class="created-laptops">
