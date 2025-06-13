@@ -70,14 +70,18 @@ router.post("/search", async (req,res) => {
 router.get("/details/:planetId", async (req, res) => {
     
     const planetId = req.params.planetId;
+    const userId = req.user?.id
 
     try {
         const data = await planetService.getOneDetails(planetId)
-        res.render("planets/details", {data})
+        const ownerLiked = await planetService.ownerOrLiked(planetId, userId)
+        console.log(!!ownerLiked)
+        
+        res.render("planets/details", {data, ownerLiked: Boolean(!!ownerLiked)})
 
     } catch(err) {
         const error = getErrorMessage(err)
-        return res.redirect("/", {error})
+        return res.render("404", {error})
 
     }
 
@@ -114,8 +118,27 @@ router.post("/edit/:planetId", async (req, res) => {
         return res.render('planets/edit', {data: data, error})
     }
 
+});
+
+
+
+router.get("/like/:planetId", async (req, res) => {
+    const planetId = req.params.planetId;
+    const userId = req.user?.id;
+
+    try { 
+
+        await planetService.likePlanet(planetId, userId)
+
+        res.redirect(`/planet/details/${planetId}`)
+
+    } catch(err){
+        const error = getErrorMessage(err);
+        return res.render(`404`, { error})
+    }
 
 });
+
 
 
 

@@ -15,11 +15,11 @@ router.get("/", async (req, res) => {
 });
 
 
-router.get("/aaa", isAuth, (req, res) => {
-    console.log("isAuth Redirect")
-    res.render("home")
-    // res.render("home", {layout: false})
-});
+// router.get("/aaa", isAuth, (req, res) => {
+//     console.log("isAuth Redirect test")
+//     res.render("home")
+//     // res.render("home", {layout: false})
+// });
 
 
 router.get("/about", (req, res) =>{

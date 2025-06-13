@@ -109,7 +109,7 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Models and models field/validation/;
  - [x] Login, Register, Logout - pages, services, controllers;
  - [x] Catalog page;
- - [x] Create/Details/Edit;
+ - [x] Create/Details/Edit/Search;
  - [ ] Like functionalities;
  - [ ] Path guards;
  - [ ] Dynamic navigations and access;
