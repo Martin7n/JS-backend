@@ -15,8 +15,6 @@ export default {
             query = query.where({solarSystem: {$regex: `${filter.solarSystem}`, $options: 'i'}})
         }
 
-        // throw new Error("errrrrrrrrrr")
-
         return query;
 
     },
@@ -63,6 +61,12 @@ export default {
         if (likeId) throw new Error("You can not like own planets or already liked planets")
     
         return Planet.findByIdAndUpdate(planetId, { $push: { likedList: userId} });
+    },
+
+    removePlanet(planetId, userId){
+
+
+        return Planet.deleteOne({ _id: planetId, owner: userId})
     },
 
 

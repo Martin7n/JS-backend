@@ -19,8 +19,10 @@
                 {{#unless ownerLiked}}
                 <a id="like-button" class="like-btn" href="/planet/like/{{data.id}}">Like</a>
                 {{/unless}}
+                {{#if owner}}
                 <a class="edit-btn" href="/planet/edit/{{data.id}}">Edit</a>
                 <a class="delete-btn" href="/planet/delete/{{data.id}}">Delete</a>
+                {{/if}}
             </div>
              {{#if ownerLiked}}
             <p id="liked-message" class="liked-message hidden">You've already liked this planet.</p>

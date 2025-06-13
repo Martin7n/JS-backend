@@ -74,10 +74,12 @@ router.get("/details/:planetId", async (req, res) => {
 
     try {
         const data = await planetService.getOneDetails(planetId)
+        
+        const owner = data.owner.equals(userId)
         const ownerLiked = await planetService.ownerOrLiked(planetId, userId)
         console.log(!!ownerLiked)
         
-        res.render("planets/details", {data, ownerLiked: Boolean(!!ownerLiked)})
+        res.render("planets/details", {data, owner, ownerLiked: Boolean(!!ownerLiked)})
 
     } catch(err) {
         const error = getErrorMessage(err)
@@ -137,6 +139,25 @@ router.get("/like/:planetId", async (req, res) => {
         return res.render(`404`, { error})
     }
 
+});
+
+router.get("/delete/:planetId", isAuth, async (req, res) => {
+    const planetId = req.params.planetId;
+    const userId = req.user?.id;
+
+    try {
+        const deleted = await planetService.removePlanet(planetId, userId)
+        if (deleted.deletedCount > 0) {return res.redirect("/planet/catalog")}
+  
+            const error = "unauthorized"
+            return res.render("404", {error})
+
+        
+
+    } catch(err){
+        const error = getErrorMessage(err);
+        return res.render("404", {error})
+    }
 });
 
 
