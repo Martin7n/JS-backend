@@ -110,6 +110,8 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Login, Register, Logout - pages, services, controllers;
  - [x] Catalog page;
  - [x] Create/Details/Edit/Search;
- - [ ] Like functionalities;
- - [ ] Path guards;
- - [ ] Dynamic navigations and access;
+ - [x] Like functionalities + details page buttons(liked/already liked);
+ - [ ] Delete planet;
+ - [ ] Path guards - isAuth;
+ - [ ] isOwner guard - maybe a middleware;
+ - [x] Dynamic navigations and access;
