@@ -25,13 +25,13 @@ router.get("/catalog", async (req, res) => {
 });
 
 
-router.get("/create", (req, res) => {
+router.get("/create", isAuth, (req, res) => {
 
     res.render("planets/create")
 });
 
 
-router.post("/create", async (req, res) => {
+router.post("/create", isAuth, async (req, res) => {
 
     const data = req.body;
     const userId = req.user?.id;
@@ -45,7 +45,7 @@ router.post("/create", async (req, res) => {
 
     
     
-router.get("/search", (req,res) => {
+router.get("/search", isAuth, (req,res) => {
 
     res.render("planets/search")
 
@@ -71,15 +71,20 @@ router.get("/details/:planetId", async (req, res) => {
     
     const planetId = req.params.planetId;
     const userId = req.user?.id
+    
 
     try {
         const data = await planetService.getOneDetails(planetId)
+
+        // if (!userId){
+        //     return res.render("planets/details", {data, userId})
+        // }
         
         const owner = data.owner.equals(userId)
         const ownerLiked = await planetService.ownerOrLiked(planetId, userId)
         console.log(!!ownerLiked)
         
-        res.render("planets/details", {data, owner, ownerLiked: Boolean(!!ownerLiked)})
+        res.render("planets/details", {data, owner, ownerLiked: Boolean(!!ownerLiked), userId})
 
     } catch(err) {
         const error = getErrorMessage(err)
@@ -90,25 +95,32 @@ router.get("/details/:planetId", async (req, res) => {
 });
 
 
-router.get("/edit/:planetId", async (req, res) => {
-
+router.get("/edit/:planetId", isAuth, async (req, res) => {
+    const userId = req.user?.id;
     const planetId = req.params.planetId;
 
     try {
         const data = await planetService.getOneDetails(planetId)
+        
+        if (!data.owner.equals(userId)) {
+            return res.redirect("/")
+        }
+
         res.render("planets/edit", {data})
 
     } catch(err) {
         const error = getErrorMessage(err)
-        return res.redirect("/", {error})
+        return res.render("404", {error})
 
     }
 
 
 });
-router.post("/edit/:planetId", async (req, res) => {
+router.post("/edit/:planetId", isAuth,  async (req, res) => {
     const planetId = req.params.planetId;
     const data = req.body;
+    const userId = req.user?.id; 
+
 
     try { 
         await planetService.updatePlanet(planetId, data)

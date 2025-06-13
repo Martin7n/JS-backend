@@ -3,10 +3,11 @@ import authservice from "../services/authservice.js";
 import jwt from "jsonwebtoken";
 import { getErrorMessage } from "../utils/errorutils.js";
 import { AUTH_COOKIE_NAME } from "../config.js";
+import { isAuth, isNotGuest } from "../middlewares/auth-middleware.js";
 
 const router = Router();
 
-router.get("/register",  (req, res) => {
+router.get("/register", isNotGuest,  (req, res) => {
     const title = {title: "register"}
 
     res.render('auth/register')
@@ -14,7 +15,7 @@ router.get("/register",  (req, res) => {
 });
 
 
-router.post("/register", async (req, res) => {
+router.post("/register", isNotGuest, async (req, res) => {
     const userData = req.body;
     const title = {title: "register"}
 
@@ -36,11 +37,11 @@ router.post("/register", async (req, res) => {
 });
 
 
-router.get("/login", async (req, res) => {
+router.get("/login", isNotGuest, async (req, res) => {
         res.render('auth/login')
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", isNotGuest, async (req, res) => {
     const userData = req.body;
 
     try{
@@ -55,7 +56,7 @@ router.post("/login", async (req, res) => {
 });
 
 
-router.get("/logout", (req, res) => {
+router.get("/logout", isAuth, (req, res) => {
     if (req.user)
     {   
         res.clearCookie(AUTH_COOKIE_NAME);

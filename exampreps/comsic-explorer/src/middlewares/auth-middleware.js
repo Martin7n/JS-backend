@@ -35,5 +35,13 @@ export const isAuth = (req, res, next) => {
 };
 
 
+export const isNotGuest = (req, res, next) => {
+    if (req.user){
+          
+        return res.redirect('/login');
+    }
+    next();
+};
+
 
 

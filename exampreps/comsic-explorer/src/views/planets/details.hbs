@@ -15,10 +15,15 @@
                 <p><strong>Description:</strong> {{data.description}}</p>
             </div>
 
+        
+
             <div class="actions">
                 {{#unless ownerLiked}}
+               {{#if userId}}
                 <a id="like-button" class="like-btn" href="/planet/like/{{data.id}}">Like</a>
+               {{/if}}
                 {{/unless}}
+              
                 {{#if owner}}
                 <a class="edit-btn" href="/planet/edit/{{data.id}}">Edit</a>
                 <a class="delete-btn" href="/planet/delete/{{data.id}}">Delete</a>
