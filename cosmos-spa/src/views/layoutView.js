@@ -7,20 +7,23 @@ const navigation = (body, ctx) => html`
 <header>
         <nav>
             <ul>
-                        <style background-color: white;>
-<li><a href="#">Home</a></li>        </style>
-                <li><a href="#">Catalog</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Create</a></li>
-                <li><a href="#">Logout</a></li>
+                        
+                <li><a href="/">Home</a></li>        
+                <li><a href="/planet/catalog">Catalog</a></li>
+                <li><a href="/planet/search">Search</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/planet/create">Create</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
 
     </header>
      <main>
     ${body}
+        <footer>
+        <p>&copy; 2024 Cosmic Explorer. All rights reserved.</p>
+    </footer>
       `
 
 
