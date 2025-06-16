@@ -29,7 +29,7 @@ export const authMiddleware = (req, res, next) => {
 export const isAuth = (req, res, next) => {
     if (!req.user){
           
-        return res.message('/login');
+        return res.send('/login');
     }
     next();
 };
@@ -38,10 +38,10 @@ export const isAuth = (req, res, next) => {
 export const isNotGuest = (req, res, next) => {
     if (req.user){
           
-        return  res.message('/login');
+        return  res.send('/login');
     }
     next();
 };
-    
+
 
 

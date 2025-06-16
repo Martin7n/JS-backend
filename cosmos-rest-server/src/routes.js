@@ -11,7 +11,7 @@ routes.get("/", (req, res) => {
 
 // routes.use(homeController);
 // routes.use(authControler);
-// routes.use("/planet", planetController);
+routes.use("/planet", planetController);
 
 // routes.use("/main", maincontentcontroller);
 

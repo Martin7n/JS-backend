@@ -10,25 +10,22 @@ const router = Router();
 
 router.get("/catalog", async (req, res) => {
 
+    console.log("?????????")
+
     try {
     const data = await planetService.getAll();
 
-    return res.render("planets/catalog", {data});
-    
+    return res.json(data)
+
     } catch (err) {
         const error = getErrorMessage(err)
 
-        return res.render("home", {error})
+        return res.send({error})
 
     }
 
 });
 
-
-router.get("/create", isAuth, (req, res) => {
-
-    res.render("planets/create")
-});
 
 
 router.post("/create", isAuth, async (req, res) => {
@@ -83,12 +80,14 @@ router.get("/details/:planetId", async (req, res) => {
         const owner = data.owner.equals(userId)
         const ownerLiked = await planetService.ownerOrLiked(planetId, userId)
         console.log(!!ownerLiked)
+
+        res.send(data)
         
-        res.render("planets/details", {data, owner, ownerLiked: Boolean(!!ownerLiked), userId})
+        // res.render("planets/details", {data, owner, ownerLiked: Boolean(!!ownerLiked), userId})
 
     } catch(err) {
         const error = getErrorMessage(err)
-        return res.render("404", {error})
+        return res.send({error})
 
     }
 
