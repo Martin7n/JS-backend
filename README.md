@@ -116,3 +116,23 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] isOwner guard - maybe a middleware;
  - [x] Dynamic navigations and access;
  - [x] All done... next();
+
+
+# non exam preps
+## Cosmic Explorer site - client **SPA** and server **Rest**
+### Cosmic Explorer  **server**
+ - [x] Skeleton setup - npm init, skeleton update, npm i for the libraries;
+ - [x] Disable rendering '/ remove rendering from the controllers abd middlewares
+ - [ ] Remove views 
+ - [x] Test - DB connection/ view / create and new DB; 
+ - [ ] Rebuild the services when needed;
+ - [ ] Rebuild controllers in order to avoid rendering and returns json(and erorrs);
+
+### Cosmic Explorer  **SPA**
+ - [ ] Skeleton setup - npm init, skeleton update, npm i for the libraries;
+ - [ ] Configure Vite; 
+ - [ ] ReCreate templates;
+ - [ ] others
+ - [ ]
+ - [ ]
+ - [ ] FE auth functionalities;
