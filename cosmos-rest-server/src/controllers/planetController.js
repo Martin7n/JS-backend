@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { isAuth } from "../middlewares/auth-middleware.js";
-import mainmodservice from "../services/mainmodservice.js"
 import { getErrorMessage } from "../utils/errorutils.js";
 import planetService from "../services/planetService.js";
 import { get } from "mongoose";
@@ -167,7 +166,7 @@ router.get("/delete/:planetId", isAuth, async (req, res) => {
 
     } catch(err){
         const error = getErrorMessage(err);
-        return res.render("404", {error})
+        return res.send("404", {error})
     }
 });
 

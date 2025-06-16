@@ -2,7 +2,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import expressSession from 'express-session';
-
+import cors from "cors";
 import routes from './routes.js';
 import { SERVER_PORT, mongooseConnect } from './config.js';
 import { authMiddleware } from './middlewares/auth-middleware.js';
@@ -23,6 +23,10 @@ app.use(expressSession({
         httpOnly: true
     }
 }))
+
+app.use(cors({
+  origin: 'http://localhost:5173'
+}));
 
 
 

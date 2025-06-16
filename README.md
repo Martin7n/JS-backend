@@ -1,13 +1,21 @@
+
+
 # JS-backend 
 Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 
-**Main project - workshop**: 
+### The mini projects:
+1. [Cats Shelter web](https://github.com/Martin7n/JS-backend/tree/main/cat-shelter)
+2. [Movie Magic web workshop](https://github.com/Martin7n/JS-backend/tree/main/movie-magic-workshop)
+3. [ExamPreps: Skeleton, Cosmic explorer site, Techstore site ](https://github.com/Martin7n/JS-backend/tree/main/exampreps) 
+4. [Transporfmed into SPA website and server(rest) - Cosmic explorer.](https://github.com/Martin7n/JS-backend/tree/main/cosmos-rest-server)
 
-## Cats Shelter web
-#### The MultiCat😺 website.
+
+
+
+## The MultiCat😺 website.
 
 ### Stages
-1. Basic functionalities - barefoot/no framework/
+1. Basic functionalities - **barefoot/no frameworks/**
 - [x] Setting up a Node.js server;
 - [x] Adding some html pages/resourses;
 - [x] Serve the pages(static html) upon request;
@@ -125,13 +133,14 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Disable rendering '/ remove rendering from the controllers abd middlewares
  - [ ] Remove views 
  - [x] Test - DB connection/ view / create and new DB; 
+ - [x] Install CORS and enable cross origin... IMPORTANT!
  - [ ] Rebuild the services when needed;
  - [ ] Rebuild controllers in order to avoid rendering and returns json(and erorrs);
 
 ### Cosmic Explorer  **SPA**
- - [ ] Skeleton setup - npm init, skeleton update, npm i for the libraries;
- - [ ] Configure Vite; 
- - [ ] ReCreate templates;
+ - [x] Skeleton setup - npm init, skeleton update, npm i for the libraries;
+ - [x] Configure Vite; 
+ - [x] Catalog page
  - [ ] others
  - [ ]
  - [ ]
