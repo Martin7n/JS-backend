@@ -7,7 +7,7 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 1. [Cats Shelter web](https://github.com/Martin7n/JS-backend/tree/main/cat-shelter)
 2. [Movie Magic web workshop](https://github.com/Martin7n/JS-backend/tree/main/movie-magic-workshop)
 3. [ExamPreps: Skeleton, Cosmic explorer site, Techstore site ](https://github.com/Martin7n/JS-backend/tree/main/exampreps) 
-4. [Transporfmed into SPA website and server(rest) - Cosmic explorer.](https://github.com/Martin7n/JS-backend/tree/main/cosmos-rest-server)
+4. Transporfmed [into SPA website](https://github.com/Martin7n/JS-backend/tree/main/cosmos-spa) and [server(rest) - Cosmic explorer.](https://github.com/Martin7n/JS-backend/tree/main/cosmos-rest-server)
 
 
 
