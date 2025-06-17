@@ -32,7 +32,6 @@ const navigation = (body, ctx) => html`
 export default  function (ctx, next){
     // console.log(ctx.user);
     // console.log(ctx.isAuthenticated);
-    console.log("CTX WHATEVER")
 
     ctx.render = (templateResult) => {
             render(navigation(templateResult, ctx), rootElement)

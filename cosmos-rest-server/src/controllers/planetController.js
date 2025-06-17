@@ -9,17 +9,17 @@ const router = Router();
 
 router.get("/catalog", async (req, res) => {
 
-    console.log("?????????")
-
     try {
     const data = await planetService.getAll();
 
     return res.json(data)
 
+
     } catch (err) {
         const error = getErrorMessage(err)
+        console.log(error)
 
-        return res.send({error})
+        return res.sendStatus({error})
 
     }
 
@@ -64,9 +64,9 @@ router.post("/search", async (req,res) => {
 
 
 router.get("/details/:planetId", async (req, res) => {
-    
     const planetId = req.params.planetId;
     const userId = req.user?.id
+
     
 
     try {
@@ -76,11 +76,10 @@ router.get("/details/:planetId", async (req, res) => {
         //     return res.render("planets/details", {data, userId})
         // }
         
-        const owner = data.owner.equals(userId)
-        const ownerLiked = await planetService.ownerOrLiked(planetId, userId)
-        console.log(!!ownerLiked)
-
-        res.send(data)
+        // const owner = data.owner.equals(userId)
+        // const ownerLiked = await planetService.ownerOrLiked(planetId, userId)
+        // console.log(!!ownerLiked)
+        return res.json(data)
         
         // res.render("planets/details", {data, owner, ownerLiked: Boolean(!!ownerLiked), userId})
 
