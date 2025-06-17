@@ -49,7 +49,7 @@ async getAll(filter = {}) {
         console.log(Object.fromEntries(Object.entries(planet)))
 
         const options = {
-                    method: "POST",
+                    method: "PUT",
                     headers: {
                     "Content-Type": "application/json",
                     },

@@ -133,15 +133,21 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Disable rendering '/ remove rendering from the controllers abd middlewares
  - [ ] Remove views 
  - [x] Test - DB connection/ view / create and new DB; 
- - [x] Install CORS and enable cross origin... IMPORTANT!
+ - [x] Install CORS and enable cross origin ... **IMPORTANT!**
+ - [x] Express JSON middleware ... **IMPORTANT!**
  - [ ] Rebuild the services when needed;
- - [ ] Rebuild controllers in order to avoid rendering and returns json(and erorrs);
+ - [ ] Rebuild ALL controllers in order to avoid rendering and returns json(and erorrs);
+ - [x] Catalog/Details/Edit controlers and services - rebuilded
+ - [ ] AUTH control
 
 ### Cosmic Explorer  **SPA**
  - [x] Skeleton setup - npm init, skeleton update, npm i for the libraries;
  - [x] Configure Vite; 
- - [x] Catalog page
+ - [x] Catalog page;
+ - [x] Details page;
+ - [x] Sample error page 
+ - [x] Edit page;
  - [ ] others
  - [ ]
  - [ ]
- - [ ] FE auth functionalities;
+ - [ ] FE auth functionalities creation and implementation;

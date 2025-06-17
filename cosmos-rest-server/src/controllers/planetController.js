@@ -132,7 +132,7 @@ router.get("/edit/:planetId", isAuth, async (req, res) => {
 // });
 
 
-router.post("/edit/:planetId",  async (req, res) => {
+router.put("/edit/:planetId",  async (req, res) => {
     //!!isAuth of the request TODO!!
     const planetId = req.params.planetId;
     const data = req.body;
@@ -141,8 +141,6 @@ router.post("/edit/:planetId",  async (req, res) => {
 
 
     try { 
-                console.log(data._id)
-
         await planetService.updatePlanet(planetId, data)
 
         res.json({ message: "Planet updated" });
