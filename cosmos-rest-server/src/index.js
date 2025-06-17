@@ -11,7 +11,10 @@ import { authMiddleware } from './middlewares/auth-middleware.js';
 const app = express();
 
 app.use(express.static('./src/public'));
-app.use(express.urlencoded());
+
+//!! extended urlencoded + express.json in order to parse the request data/json;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(cookieParser());
 app.use(expressSession({

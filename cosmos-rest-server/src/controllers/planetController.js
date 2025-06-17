@@ -113,20 +113,44 @@ router.get("/edit/:planetId", isAuth, async (req, res) => {
 
 
 });
-router.post("/edit/:planetId", isAuth,  async (req, res) => {
+// router.post("/edit/:planetId", isAuth,  async (req, res) => {
+//     const planetId = req.params.planetId;
+//     const data = req.body;
+//     const userId = req.user?.id; 
+
+
+//     try { 
+//         await planetService.updatePlanet(planetId, data)
+
+//         res.redirect("/planet/catalog")
+
+//     } catch(err){
+//         const error = getErrorMessage(err);
+//         return res.render('planets/edit', {data: data, error})
+//     }
+
+// });
+
+
+router.post("/edit/:planetId",  async (req, res) => {
+    //!!isAuth of the request TODO!!
     const planetId = req.params.planetId;
     const data = req.body;
     const userId = req.user?.id; 
 
 
+
     try { 
+                console.log(data._id)
+
         await planetService.updatePlanet(planetId, data)
 
-        res.redirect("/planet/catalog")
+        res.json({ message: "Planet updated" });
 
     } catch(err){
         const error = getErrorMessage(err);
-        return res.render('planets/edit', {data: data, error})
+        return res.send({error})
+        // return res.render('planets/edit', {data: data, error})
     }
 
 });

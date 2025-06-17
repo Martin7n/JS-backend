@@ -1,5 +1,5 @@
 import { html, render } from 'lit';
-import planetsApi from '../../api/planetsApi';
+import planetsApi from '../../api/planetsApi.js';
 
 
 
@@ -30,11 +30,7 @@ html`<div class="planet-details">
 export default async function planetCatalog(ctx){
     const planetId = ctx.params.id;
     const data = await planetsApi.getOne(planetId)
-    console.log(data)
-      
+    // console.log(data)
       
     ctx.render(template(data))
-
-
-
 };

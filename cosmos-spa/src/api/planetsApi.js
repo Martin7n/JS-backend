@@ -34,5 +34,31 @@ async getAll(filter = {}) {
                     return response.json();})
                 .catch(e => alert(`${e}`)) 
 
+    },
+
+    async updateOne(planetId, formData){
+        
+        const urlRequested = `${baseUrl}planet/edit/${planetId}`;
+
+
+        //!! UserAuth to be added after auth creation
+
+        const planet = {...formData, _id: planetId}
+        console.log(planetId)
+        console.log(`api::::`)
+        console.log(Object.fromEntries(Object.entries(planet)))
+
+        const options = {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(planet)
+                    }
+        const response = await fetch(urlRequested, options);
+
+
+        return  response.json();
+
     }
 }

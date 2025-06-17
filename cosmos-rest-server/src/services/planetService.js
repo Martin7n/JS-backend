@@ -33,6 +33,9 @@ export default {
     },
 
     updatePlanet(planetId, data){
+        console.log(planetId)
+        console.log("============")
+        console.log(data)
 
         return Planet.findByIdAndUpdate(planetId, data, { runValidators: true});
     },
