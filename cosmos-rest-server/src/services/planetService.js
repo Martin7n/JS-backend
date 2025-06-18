@@ -20,9 +20,9 @@ export default {
     },
 
 
-    create(data, userId){
+    create(data, ownerId){
 
-        return Planet.create({...data, owner: userId});
+        return Planet.create(data );
 
     },
 

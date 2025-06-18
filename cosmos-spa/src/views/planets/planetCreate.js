@@ -1,13 +1,14 @@
 import { html, render } from 'lit';
 import planetsApi from '../../api/planetsApi.js';
 import render404 from '../render404.js';
+import page from "page";
 
 
 
 const template = () =>
 html`<div class="planet-details">
             <form class="planet-form" 
-            @submit=${(e) => {planetCreate(e)}} 
+            @submit=${(e) => {createPlane(e)}} 
             action="javascript:void(0);"
             >
             <label for="name">Name of Planet:</label>
@@ -61,18 +62,23 @@ export default async function planetCreate(ctx){
 };
 
 
-async function planetCreate(event) {
+async function createPlane(event) {
     //!! isAuth
      const form = event.target;
      const formData = new FormData(form);
      const planet = Object.fromEntries(formData);
+
+     //!! dummy data
+     let ownerId = "684aa3f8d2d4b9f7bc3bf1aa"
+     //!! dummy data
      try {
 
-        await planetsApi.createPlanetApi(formData)
+        await planetsApi.createPlanetApi(planet, ownerId)
+        page.redirect("/planet/catalog")
 
      } catch (err) {
         console.log(err)
-        page.redirect("404")
+        page.redirect("/")
         
      }
     

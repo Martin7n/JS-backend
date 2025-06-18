@@ -32,12 +32,18 @@ router.post("/create", async (req, res) => {
     //!!isAuth
 
     const data = req.body;
-    const userId = req.user?.id;
+    console.log(data)
+    const ownerId = data.owner; 
+
+        console.log(data)
+    // const data = req.body;
+    // const userId = req.user?.id;
     try{
-        await planetService.create(data, userId)
+        const newPlanet = await planetService.create(data)
+        return res.sendStatus(200)
     } catch(err){
         const error = getErrorMessage(err)
-        return res.render("home", {error})
+        return res.sendStatus(400)    
     }
 });
 
@@ -143,13 +149,15 @@ router.put("/edit/:planetId",  async (req, res) => {
 
 
     try { 
-        await planetService.updatePlanet(planetId, data)
+        const result = await planetService.updatePlanet(planetId, data)
 
-        res.json({ message: "Planet updated" });
+        // res.status(200).json({ result });
+
+        return res.json({ message: "Planet updated" });
 
     } catch(err){
         const error = getErrorMessage(err);
-        return res.send({error})
+        return res.sendStatus(400)
         // return res.render('planets/edit', {data: data, error})
     }
 

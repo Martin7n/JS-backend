@@ -12,7 +12,6 @@ async getAll(filter = {}) {
     // const response = await fetch(urlRequested)
     // const planets = await response.json();
      // return planets
-
     return await fetch(urlRequested)
                 .then(response => {
                     if (!response.ok) 
@@ -44,9 +43,7 @@ async getAll(filter = {}) {
         //!! UserAuth to be added after auth creation
 
         const planet = {...formData, _id: planetId}
-        console.log(planetId)
-        console.log(`api::::`)
-        console.log(Object.fromEntries(Object.entries(planet)))
+        
 
         const options = {
                     method: "PUT",
@@ -55,33 +52,30 @@ async getAll(filter = {}) {
                     },
                     body: JSON.stringify(planet)
                     }
-        const response = await fetch(urlRequested, options).then(response => {
-                    if (!response.ok) 
-                        throw new Error(`${response.status}`); 
-                    return response.json();})
-                .catch(e => alert(`${e}`)) 
-;
-
-
-        return  response.json();
-
+        const response = await fetch(urlRequested, options)
+                    // .then(response => {
+                    // if (!response.ok) 
+                    //     throw new Error(`${response.status}`); 
+                    // })
+//         //         .catch(e => alert(`${e}`)) 
+// ;    
+            return response
     },
 
-    async createPlanetApi(planet){
+    async createPlanetApi(formData, ownerId){
           const urlRequested = `${baseUrl}planet/create/`;
+          const planet = {...formData, owner: ownerId}
+
           const options = {
-                    method: "PUT",
+                    method: "POST",
                     headers: {
                     "Content-Type": "application/json",
                     },
                     body: JSON.stringify(planet)
                     }
-        const response = await fetch(urlRequested, options).then(response => {
-                    if (!response.ok) 
-                        throw new Error(`${response.status}`); 
-                    return response.json();})
-                .catch(e => alert(`${e}`)) 
-;
+        const response = await fetch(urlRequested, options)
+ 
+         return response
 
     },
 }

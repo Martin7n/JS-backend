@@ -35,6 +35,10 @@ app.use(cors({
 
 mongooseConnect("cosmicDB");
 app.use(authMiddleware);
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
+});
 app.use(routes);
 
 
