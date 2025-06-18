@@ -5,12 +5,12 @@ import maincontentcontroller from "../src/controllers/maincontentcontroller.js"
 import planetController from "../src/controllers/planetController.js"
 const routes = Router();
 
-routes.get("/", (req, res) => {
-    res.send("works")
-})
+// routes.get("/", (req, res) => {
+//     res.send("works")
+// })
 
 // routes.use(homeController);
-// routes.use(authControler);
+routes.use(authControler);
 routes.use("/planet", planetController);
 // routes.use("/main", maincontentcontroller);
 

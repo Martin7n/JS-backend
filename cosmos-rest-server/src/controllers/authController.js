@@ -7,26 +7,26 @@ import { isAuth, isNotGuest } from "../middlewares/auth-middleware.js";
 
 const router = Router();
 
-router.get("/register", isNotGuest,  (req, res) => {
-    const title = {title: "register"}
+// router.get("/register", isNotGuest,  (req, res) => {
+//     const title = {title: "register"}
 
-    // res.render('auth/register')
+//     // res.render('auth/register')
 
-});
+// });
 
 
-router.post("/register", isNotGuest, async (req, res) => {
+router.post("/register", async (req, res) => {
     const userData = req.body;
+
+    // console.log(userData)
 
 
     try{
-        await authservice.register(userData);
+        const user = await authservice.register(userData);
+        const token  = await authservice.login(userData);
+        console.log({user, token})
+        return res.json({user, token})
 
-        res.json({
-        _id: user.id,
-        accessToken: token,
-        email: user.email,
-    });
 
     } catch (err) {
         const error = getErrorMessage(err); 
@@ -34,8 +34,8 @@ router.post("/register", isNotGuest, async (req, res) => {
 
     };
 
-     const token = await authservice.login(userData);
-        res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
+    //  const token = await authservice.login(userData);
+    //     res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
 
 
 
@@ -43,25 +43,28 @@ router.post("/register", isNotGuest, async (req, res) => {
 });
 
 
-router.get("/login", isNotGuest, async (req, res) => {
-    const userData = req.body;
+// router.get("/login", isNotGuest, async (req, res) => {
+//     const userData = req.body;
 
-    const { user, token } = await authservice.register(userData);
+//     const { user, token } = await authservice.register(userData);
 
-    res.json({
-        _id: user.id,
-        accessToken: token,
-        email: user.email,
-    });
-});
+//     res.json({
+//         _id: user.id,
+//         accessToken: token,
+//         email: user.email,
+//     });
+// });
 
-router.post("/login", isNotGuest, async (req, res) => {
+router.post("/login", async (req, res) => {
     const userData = req.body;
 
     try{
-        const token = await authservice.login(userData);        
-        res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
-        return res.redirect('/');
+        const response = await authservice.login(userData);      
+        const token = await response.json();  
+        // res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
+        // return res.redirect('/');
+
+         return res.json({token})
 
     } catch (err) {
         return res.render('auth/login', { error: getErrorMessage(err), user: userData });

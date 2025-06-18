@@ -1,9 +1,11 @@
 const baseUrl = "http://localhost:3030/"
 
 export default {
-    register(userData){
+    async register(userData){
+        
 
-        const reqUrl = `${baseUrl}/register`
+        const reqUrl = `${baseUrl}register`
+        console.log(reqUrl)
 
         const options = {
                     method: "POST",
@@ -13,15 +15,15 @@ export default {
                     body: JSON.stringify(userData)
                 };
         
-
-
-        console.log(userData)
-
+        const response = await fetch(reqUrl, options);
+        const {user, token} = await response.json()
+      
+        return {user, token}
 
     },
 
 
-    login(userData){
+    async login(userData){
         const reqUrl = `${baseUrl}/login`
         const options = {
                     method: "POST",
@@ -30,5 +32,13 @@ export default {
                     },
                     body: JSON.stringify(userData)
                     }
-    };
+         const response = await fetch(reqUrl, options)
+
+         const {user, token} = await response.json();
+         return {user, token}
+
+
+    },
+
+    
 }
