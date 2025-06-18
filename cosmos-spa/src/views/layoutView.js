@@ -5,6 +5,10 @@ const rootElement = document.getElementById('rootElement')
 
 const navigation = (body, ctx) => html`
 <header>
+           <div class="card-right">
+       
+        </div>
+        
         <nav>
             <ul>
                         
@@ -21,6 +25,11 @@ const navigation = (body, ctx) => html`
     </header>
      <main>
     ${body}
+
+
+    </main>
+
+       
         <footer>
         <p>&copy; 2024 Cosmic Explorer. All rights reserved.</p>
     </footer>

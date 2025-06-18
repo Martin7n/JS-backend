@@ -27,7 +27,9 @@ router.get("/catalog", async (req, res) => {
 
 
 
-router.post("/create", isAuth, async (req, res) => {
+router.post("/create", async (req, res) => {
+
+    //!!isAuth
 
     const data = req.body;
     const userId = req.user?.id;

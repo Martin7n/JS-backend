@@ -5,6 +5,7 @@ import planetCatalog  from './views/planets/planetCatalog.js';
 import planetDetails from './views/planets/planetDetails.js'
 import render404 from './views/render404.js';
 import planetEdit from './views/planets/planetEdit.js';
+import planetCreate from './views/planets/planetCreate.js';
 
 
 
@@ -15,6 +16,7 @@ const setupRoutes = () => {
     page('/planet/catalog', planetCatalog);
     page('/planet/details/:id', planetDetails);
     page('/planet/edit/:id', planetEdit);
+    page('/planet/create/', planetCreate)
     page('/404', render404)
 
 

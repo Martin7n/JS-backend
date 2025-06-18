@@ -11,13 +11,33 @@ body {
     width: 100%;
     background: url("https://cdn.pixabay.com/photo/2023/03/22/04/32/futuristic-7868625_1280.jpg")
         no-repeat center;
+    /* background: url("https://cdn.pixabay.com/photo/2024/10/01/12/45/ai-generated-9088294_1280.jpg"); */
     background-size: cover;
 }
+
+
+
+.card-right {
+        /* background: url("https://cdn.pixabay.com/photo/2024/10/01/12/45/ai-generated-9088294_1280.jpg"); */
+       
+        background: url("https://cdn.pixabay.com/photo/2024/03/18/17/15/ai-generated-8641506_640.jpg") no-repeat center;;
+        background-size:cover;
+        width: 100px;
+        height: 100px;
+        /* min-width: 50px; */
+        display: block;
+        border-radius: 100%;
+        position: relative;
+}
+
+
 
 header {
     background: #202340;
     padding: 20px 0;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 header h1 {

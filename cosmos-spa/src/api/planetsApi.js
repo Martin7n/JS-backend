@@ -55,10 +55,33 @@ async getAll(filter = {}) {
                     },
                     body: JSON.stringify(planet)
                     }
-        const response = await fetch(urlRequested, options);
+        const response = await fetch(urlRequested, options).then(response => {
+                    if (!response.ok) 
+                        throw new Error(`${response.status}`); 
+                    return response.json();})
+                .catch(e => alert(`${e}`)) 
+;
 
 
         return  response.json();
 
-    }
+    },
+
+    async createPlanetApi(planet){
+          const urlRequested = `${baseUrl}planet/create/`;
+          const options = {
+                    method: "PUT",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(planet)
+                    }
+        const response = await fetch(urlRequested, options).then(response => {
+                    if (!response.ok) 
+                        throw new Error(`${response.status}`); 
+                    return response.json();})
+                .catch(e => alert(`${e}`)) 
+;
+
+    },
 }
