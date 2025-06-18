@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
 
     try{
         const user = await authservice.register(userData);
-        const token  = await authservice.login(userData);
+        const {u, token} = await authservice.login(userData);
         console.log({user, token})
         return res.json({user, token})
 
@@ -58,18 +58,23 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     const userData = req.body;
 
-    try{
-        const response = await authservice.login(userData);      
-        const token = await response.json();  
-        // res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
-        // return res.redirect('/');
+    console.log(userData)
 
-         return res.json({token})
+    try{
+        const {user, token} = await authservice.login(userData);  
+         // res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
+        // return res.redirect('/');
+        // console.log(user, token)
+
+
+        return res.json({user, token})
 
     } catch (err) {
-        return res.render('auth/login', { error: getErrorMessage(err), user: userData });
+
+        console.log(err)
+        // return res.render('auth/login', { error: getErrorMessage(err), user: userData });
     };
-    res.redirect("/")
+    
 });
 
 

@@ -1,4 +1,6 @@
 import { html, render } from 'lit';
+import authApi from '../../api/authApi.js';
+import page from 'page';
 
 
 const template = () =>  html`<section class="login-hero">
@@ -10,7 +12,7 @@ const template = () =>  html`<section class="login-hero">
 
     <section class="login-form">
         <div class="container">
-            <form action="#" 
+            <form 
             @submit=${(e) => {userLogin(e)}} 
             action="javascript:void(0);"
             >
@@ -46,7 +48,7 @@ async function userLogin(event) {
 
     try {
         await authApi.login(user);
-
+        
         page.redirect("/planet/catalog")
 
     } catch(err){

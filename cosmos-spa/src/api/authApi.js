@@ -18,13 +18,13 @@ export default {
         const response = await fetch(reqUrl, options);
         const {user, token} = await response.json()
       
-        return {user, token}
+        return user, token
 
     },
 
 
     async login(userData){
-        const reqUrl = `${baseUrl}/login`
+        const reqUrl = `${baseUrl}login`
         const options = {
                     method: "POST",
                     headers: {
@@ -32,13 +32,14 @@ export default {
                     },
                     body: JSON.stringify(userData)
                     }
+        //  return 
          const response = await fetch(reqUrl, options)
 
          const {user, token} = await response.json();
-         return {user, token}
+         console.log({user, token})
 
 
     },
 
     
-}
+};

@@ -41,9 +41,9 @@ export default {
             email: user.email,
         };  
         
-        const token = jwt.sign(payload, JSON_WEBTOKEN_SECRET, { expiresIn: '2h' });
+        const token =  jwt.sign(payload, JSON_WEBTOKEN_SECRET, { expiresIn: '2h' });
         
-        return token
+        return {user, token}
 
     },
 
