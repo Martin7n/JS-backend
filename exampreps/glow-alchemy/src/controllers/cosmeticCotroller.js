@@ -162,9 +162,28 @@ router.post("/create", isAuth, async (req, res) => {
     })
 
 
+     router.get("/recommend/:cosmeId", isAuth, async(req, res) =>{
+
+        const user = req.user?.id
+        const cosmeId =  req.params.cosmeId;
+
+        try {
+
+            const data = await cosmeService.getOne(cosmeId);
+            // if (data.owner != user){
+                await cosmeService.recommend(cosmeId, user)
+                return res.redirect("/cosmetic/catalog")
+            // } else 
+            // {  throw new Error("You don't have permission to delete others cosmetic")}
+
+        } catch(err){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+
+        }
 
 
-
+    })
 
 
 

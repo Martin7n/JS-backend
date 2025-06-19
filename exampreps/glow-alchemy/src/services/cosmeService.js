@@ -35,7 +35,7 @@ export default {
         },
     
         edit(itemID, itemData){
-            
+
 
             return Cosmetic.findByIdAndUpdate(itemID, itemData)
     
@@ -49,6 +49,35 @@ export default {
 
             return Cosmetic.find().sort(sort).limit(num);
 
-        }
+        },
+
+  
+
+
+
+ownerOrRecommend(cosmeId, userId){
+return  Cosmetic.findOne({
+                        _id: cosmeId,
+                        $or: [
+                        { owner: userId },
+                        { recommendList: userId }
+                        ]
+                    }).select('_id');
+},
+
+async recommend(cosmeId, userId){
+
+    const recommendId = await Cosmetic.findOne({
+                        _id: cosmeId,
+                        $or: [
+                        { owner: userId },
+                        { recommendList: userId }
+                            ]
+                    }).select('_id');
+
+    if (recommendId) throw new Error("You can not recommend own or recommended cosmetics")
+    
+    return Cosmetic.findByIdAndUpdate(cosmeId, { $push: { recommendList: userId} });
+    },
 
 };
