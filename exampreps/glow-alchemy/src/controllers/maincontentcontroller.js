@@ -46,8 +46,6 @@ router.post("/create", async (req, res) => {
     
      res.redirect("/main")
 
-   
-    
 
 });
 
