@@ -3,17 +3,15 @@
 
 <h2>Product Catalog</h2>
         <section class="products">
+          
 
             {{#each data}}
             <article class="product">
                 <img src="{{image}}">
                 <h3>{{name}}</h3>
-                <p>Suitable for: {{description}}</p>
-                <a href="/details/{{id}}">Read More</a>
+                <p>Suitable for: {{skin}}</p>
+                <a href="/cosmetic/details/{{_id}}">Read More</a>
             </article>
-            
-           
-
             {{else}}
             
             <p class="no-post">There are no products found yet!</p> 

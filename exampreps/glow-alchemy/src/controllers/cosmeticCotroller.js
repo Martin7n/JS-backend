@@ -8,11 +8,11 @@ const router = Router();
 
 
 router.get("/catalog", async(req, res) => {
-    try {
     
+    try {
             const data = await cosmeService.getAll()
             console.log(data)
-            res.render("cosmetic/catalog", data)
+            res.render("cosmetic/catalog", {data})
         } catch (err){
             const error = getErrorMessage(err)
             return res.render("cosmetic/catalog", {error})
@@ -46,6 +46,22 @@ router.post("/create", isAuth, async (req, res) => {
     
      res.redirect("/cosmetic/catalog")
 });
+
+    router.get("/details/:cosmeId", isAuth, async (req, res) => {
+        const cosmeId =  req.params.cosmeId
+        try{
+            const data = await cosmeService.getOne(cosmeId);
+            res.render("cosmetic/details", {data})
+
+
+        } catch(e){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+        }
+    });
+
+
+
 
 
 export default router;
