@@ -66,7 +66,7 @@ router.post("/login", async (req, res) => {
         // return res.redirect('/');
         // console.log(user, token)
 
-
+        //!!user!! exclude password
         return res.json({user, token})
 
     } catch (err) {
