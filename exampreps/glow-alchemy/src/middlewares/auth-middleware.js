@@ -19,7 +19,7 @@ export const authMiddleware = (req, res, next) => {
         res.locals.isAuthenticated = true;
         next()
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.clearCookie(AUTH_COOKIE_NAME);
         res.redirect('/login');
     }

@@ -43,4 +43,10 @@ export default {
     
         },
 
+        getLast(sort, num){
+
+            return Cosmetic.find().sort(sort).limit(num);
+
+        }
+
 };

@@ -11,7 +11,7 @@ router.get("/catalog", async(req, res) => {
     
     try {
             const data = await cosmeService.getAll()
-            console.log(data)
+            // console.log(data)
             res.render("cosmetic/catalog", {data})
         } catch (err){
             const error = getErrorMessage(err)
@@ -34,7 +34,7 @@ router.post("/create", isAuth, async (req, res) => {
     const data = req.body
     const user = req.user?.id
     const cosme = {...data, owner: user}
-    console.log(cosme)
+    // console.log(cosme)
 
      try {
         await cosmeService.create(cosme);
@@ -58,6 +58,46 @@ router.post("/create", isAuth, async (req, res) => {
             const error = getErrorMessage(err)
             return res.render("cosmetic/catalog", {error})
         }
+    });
+
+
+
+    router.get("/edit/:cosmeId", isAuth, async (req, res) => {
+        const cosmeId =  req.params.cosmeId
+        try{
+            const data = await cosmeService.getOne(cosmeId);
+            res.render("cosmetic/edit", {data})
+
+
+        } catch(e){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+        }
+
+    });
+
+    router.post("/edit/:cosmeId", isAuth, async (req, res) => {
+        const cosmeId =  req.params.cosmeId;
+        const data = req.body;
+
+        console.log(data)
+
+
+        try{
+            await cosmeService.edit(cosmeId, data);
+            res.redirect("cosmetic/catalog")
+
+
+        } catch(err){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+        }
+
+
+
+
+
+
     });
 
 
@@ -100,6 +140,8 @@ router.post("/create", isAuth, async (req, res) => {
         }
     
     });
+
+
 
 
 
