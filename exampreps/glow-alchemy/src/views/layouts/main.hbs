@@ -17,13 +17,16 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Add Product</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cosmetic/catalog">Products</a></li>
+                <li><a href="/cosmetic/search">Search</a></li>
+                <li><a href="/cosmetic/create">Add Product</a></li>
+                {{#if isAuthenticated}}
+                <li><a href="/logout">logout</a></li>
+                {{else}}
+                <li><a href="/register">register</a></li>
+                <li><a href="/login">login</a></li>
+                    {{/if}}
             </ul>
         </nav>
     </header>
@@ -48,9 +51,11 @@
     </nav>    
     </header>
     <main>
+        {{#if error}}
         <div class="error-container">
             <p>Error</p>
         </div>
+        {{/if}}
         {{error}}
         {{{body}}}
     

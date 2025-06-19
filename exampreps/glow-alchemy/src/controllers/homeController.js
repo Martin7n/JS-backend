@@ -4,7 +4,7 @@ import { isAuth } from "../middlewares/auth-middleware.js";
 const router = Router();
 
 router.get("/", (req, res) => {
-    console.log(req.user)
+    console.log(`registered user check=>${req.user}`)
     res.render("home") 
     // res.render("home", {layout: false})
 });
