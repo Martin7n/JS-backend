@@ -7,7 +7,10 @@ const userSchema = new Schema({
     username: { type: String, validate: minMaxLenValidator(2, 20),trim: true, },
     email:{ type: String, validate: minMaxLenValidator(10),lowercase: true, },
     password: {type: String, validate: minMaxLenValidator(4), trim: true,}
-});
+},
+    {
+    timestamps: true
+    });
 
 
 userSchema.pre("save", async function () {
