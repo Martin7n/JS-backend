@@ -61,6 +61,51 @@ router.post("/create", isAuth, async (req, res) => {
     });
 
 
+    router.get("/search", async(req, res) => {
+
+        return res.render("cosmetic/search")
+    });
+
+    router.post("/search", async(req, res) => {
+        const filter = req.body
+        console.log(filter)
+
+        try{
+            
+            const data = await cosmeService.getAll({"name": filter.search});
+            console.log(data)
+             
+            return res.render("cosmetic/search", {data})
+
+
+        } catch(err){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+
+        }
+
+    });
+
+
+    router.get("/catalog", async(req, res) => {
+    
+    try {
+            const data = await cosmeService.getAll()
+            console.log(data)
+            res.render("cosmetic/catalog", {data})
+        } catch (err){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+    
+        }
+    
+    });
+
+
+
+
+
+
 
 
 

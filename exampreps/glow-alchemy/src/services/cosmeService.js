@@ -6,8 +6,8 @@ export default {
     getAll(filter = {}){
             let query = Cosmetic.find({});
     
-            if (filter.itemName) {
-                query = query.where({itemName: {$regex: `${filter.itemName}`, $options: 'i'}})
+            if (filter.name) {
+                query = query.where({name: {$regex: `${filter.name}`, $options: 'i'}})
             }
     
             // if (filter.itemName) {
