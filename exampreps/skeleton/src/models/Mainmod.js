@@ -16,10 +16,20 @@ const mainModelSchema = new Schema({
     },
     description: {
          type: String,
-    }
+    },
     
-});
+    image:          { type: String, required: true,
+            validate: {
+            validator: 
+            val => /^https?:\/\//.test(val),
+            message: (props) => `${props.value} is invalid image url!`
 
+        }
+    },
+          {
+            timestamps: true
+          }
+    );
 
 const MainModel = model("MainModel", mainModelSchema);
 
