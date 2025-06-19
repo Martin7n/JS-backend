@@ -63,7 +63,8 @@ router.post("/create", isAuth, async (req, res) => {
 
 
     router.get("/edit/:cosmeId", isAuth, async (req, res) => {
-        const cosmeId =  req.params.cosmeId
+        const cosmeId =  req.params.cosmeId;
+        
         try{
             const data = await cosmeService.getOne(cosmeId);
             res.render("cosmetic/edit", {data})
@@ -79,6 +80,8 @@ router.post("/create", isAuth, async (req, res) => {
     router.post("/edit/:cosmeId", isAuth, async (req, res) => {
         const cosmeId =  req.params.cosmeId;
         const data = req.body;
+        const user = req.user?.id
+
 
         console.log(data)
 
@@ -92,12 +95,6 @@ router.post("/create", isAuth, async (req, res) => {
             const error = getErrorMessage(err)
             return res.render("cosmetic/catalog", {error})
         }
-
-
-
-
-
-
     });
 
 
@@ -140,6 +137,29 @@ router.post("/create", isAuth, async (req, res) => {
         }
     
     });
+
+    router.get("/delete/:cosmeId", isAuth, async(req, res) =>{
+
+        const user = req.user?.id
+        const cosmeId =  req.params.cosmeId;
+
+        try {
+
+            const data = await cosmeService.getOne(cosmeId);
+            if (data.owner == user){
+                await cosmeService.delete(cosmeId)
+                return res.redirect("/cosmetic/catalog")
+            } else 
+            {  throw new Error("You don't have permission to delete others cosmetic")}
+
+        } catch(err){
+            const error = getErrorMessage(err)
+            return res.render("cosmetic/catalog", {error})
+
+        }
+
+
+    })
 
 
 

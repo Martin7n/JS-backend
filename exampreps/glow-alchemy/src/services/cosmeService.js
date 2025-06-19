@@ -35,6 +35,8 @@ export default {
         },
     
         edit(itemID, itemData){
+            
+
             return Cosmetic.findByIdAndUpdate(itemID, itemData)
     
         },
