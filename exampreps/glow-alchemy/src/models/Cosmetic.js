@@ -33,6 +33,8 @@ const cosmeticlSchema = new Schema({
     );
 
 const Cosmetic = model("Cosmetic", cosmeticlSchema);
+
+export default Cosmetic;
     
 
 

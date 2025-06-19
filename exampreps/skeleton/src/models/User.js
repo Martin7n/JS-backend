@@ -6,7 +6,8 @@ import { minMaxLenValidator } from "../../../glow-alchemy/src/utils/validators.j
 
 const userSchema = new Schema({
     username: { type: String, validate: minMaxLenValidator(2, 20),trim: true, },
-    email:{ type: String, validate: minMaxLenValidator(10),lowercase: true,  match: /\@[a-zA-Z]+.[a-zA-Z]+$/, },
+    email:{ type: String, validate: minMaxLenValidator(10),lowercase: true,  
+            match: /\@[a-zA-Z]+.[a-zA-Z]+$/, },
     password: {type: String, validate: minMaxLenValidator(4), trim: true,}
 },
     {
