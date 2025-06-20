@@ -3,6 +3,7 @@ import authservice from "../services/authservice.js";
 import jwt from "jsonwebtoken";
 import { getErrorMessage } from "../utils/errorutils.js";
 import { AUTH_COOKIE_NAME } from "../config.js";
+import { isAuth } from "../middlewares/auth-middleware.js";
 
 const router = Router();
 
@@ -72,12 +73,13 @@ router.post("/login", async (req, res) => {
 });
 
 
-router.get("/logout", (req, res) => {
+router.get("/logout", isAuth, (req, res) => {
     if (req.user)
     {   
         res.clearCookie(AUTH_COOKIE_NAME);
-        res.redirect('/')
+       
     }
+     res.redirect('/')
 });
 
 

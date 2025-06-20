@@ -6,7 +6,7 @@ import { getErrorMessage } from "../utils/errorutils.js";
 const router = Router();
 
 router.get("/", async(req, res) => {
-    console.log(`registered user check=>${req.user}`)
+    console.log(`registered user check=>${req.user?.id}`)
 
     const num = "3";
     const sort = {createdAt: -1}

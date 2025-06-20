@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    {{#if user}}
+    {{!-- {{#if user}}
     {{user.username}}
 
-    {{/if}}
+    {{/if}} --}}
 
 
     <header>
@@ -20,8 +20,9 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/cosmetic/catalog">Products</a></li>
                 <li><a href="/cosmetic/search">Search</a></li>
+                 {{#if isAuthenticated}}
                 <li><a href="/cosmetic/create">Add Product</a></li>
-                {{#if isAuthenticated}}
+ 
                 <li><a href="/logout">logout</a></li>
                 {{else}}
                 <li><a href="/register">register</a></li>
@@ -31,32 +32,14 @@
         </nav>
     </header>
 
-    <header>
-    <nav>
-
-        <ul>
-        <li> <a href="/">Home</li>
-        <li><a href="/main">Not home</a></li>
-        {{#if isAuthenticated}}
-         <li><a href="/logout">logout</a></li>
-        {{else}}
-        <li><a href="/register">register</a></li>
-        <li><a href="/login">login</a></li>
-             {{/if}}
-            
-       
-       
-
-        </ul>
-    </nav>    
-    </header>
+    
     <main>
         {{#if error}}
         <div class="error-container">
-            <p>Error</p>
+            <p>{{error}}</p>
         </div>
         {{/if}}
-        {{error}}
+        {{!-- {{error}} --}}
         {{{body}}}
     
     </main>

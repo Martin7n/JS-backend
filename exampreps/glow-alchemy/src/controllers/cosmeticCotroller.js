@@ -24,8 +24,7 @@ router.get("/catalog", async(req, res) => {
 
 
 router.get("/create", isAuth, (req, res) => {
-    const user = req.user?.id
-    res.render("cosmetic/create")
+     res.render("cosmetic/create")
 });
 
 
@@ -47,7 +46,8 @@ router.post("/create", isAuth, async (req, res) => {
      res.redirect("/cosmetic/catalog")
 });
 
-    router.get("/details/:cosmeId", isAuth, async (req, res) => {
+    router.get("/details/:cosmeId", async (req, res) => {
+        const userId = req.user?.id;
         const cosmeId =  req.params.cosmeId
         try{
             const data = await cosmeService.getOne(cosmeId);
@@ -57,7 +57,7 @@ router.post("/create", isAuth, async (req, res) => {
         } catch(e){
             const error = getErrorMessage(err)
             return res.render("cosmetic/catalog", {error})
-        }
+        } 
     });
 
 

@@ -31,9 +31,10 @@
         </article>
 
         <div class="command">
+            {{#if user}}
             <a href="/cosmetic/edit/{{data.id}}">Edit</a>
             <a href="/cosmetic/delete/{{data.id}}">Delete</a>
-
+            {{/if}}
             
 
             {{#if data.recommendList}}
