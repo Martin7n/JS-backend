@@ -7,6 +7,8 @@ const routes = Router();
 
 routes.use(homeController);
 routes.use(authControler);
+routes.use("/", homeController);
+
 routes.use("/cosmetic", cosmeticController);
 
 routes.use("/main", maincontentcontroller);

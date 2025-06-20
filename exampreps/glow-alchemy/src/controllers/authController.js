@@ -7,6 +7,11 @@ import { AUTH_COOKIE_NAME } from "../config.js";
 const router = Router();
 
 router.get("/register",  (req, res) => {
+
+    const userId = req.user?.id
+    if (userId){
+        return res.redirect("/")
+    }
     const title = {title: "register"}
 
     res.render('auth/register', title)
@@ -15,6 +20,10 @@ router.get("/register",  (req, res) => {
 
 
 router.post("/register", async (req, res) => {
+    const userId = req.user?.id
+    if (userId){
+        return res.redirect("/")
+    }
     const userData = req.body;
     const title = {title: "register"}
 
@@ -37,10 +46,18 @@ router.post("/register", async (req, res) => {
 
 
 router.get("/login", async (req, res) => {
+    const userId = req.user?.id
+    if (userId){
+        return res.redirect("/")
+    }
         res.render('auth/login')
 });
 
 router.post("/login", async (req, res) => {
+    const userId = req.user?.id
+    if (userId){
+        return res.redirect("/")
+    }
     const userData = req.body;
 
     try{

@@ -6,7 +6,7 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 ### The mini projects:
 1. [Cats Shelter web](https://github.com/Martin7n/JS-backend/tree/main/cat-shelter)
 2. [Movie Magic web workshop](https://github.com/Martin7n/JS-backend/tree/main/movie-magic-workshop)
-3. [ExamPreps: Skeleton, Cosmic explorer site, Techstore site ](https://github.com/Martin7n/JS-backend/tree/main/exampreps) 
+3. [ExamPreps:](https://github.com/Martin7n/JS-backend/tree/main/exampreps) Skeleton, Cosmic explorer, Techstore , Glow Alchemy sites
 4. Transporfmed [into SPA website](https://github.com/Martin7n/JS-backend/tree/main/cosmos-spa) and [server(rest) - Cosmic explorer.](https://github.com/Martin7n/JS-backend/tree/main/cosmos-rest-server)
 
 
@@ -108,7 +108,7 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
 ### Recipes website
 - [ ] ToDo later. 
 
-### Cosmic Explorer  **New ExamPrep** 
+### Cosmic Explorer  
  - [x] Skeleton setup - npm init, skeleton import and update, npm i for the libraries;
  - [x] Test - DB connection/ view / create and new DB;
  - [x] Resourses migration;
@@ -126,6 +126,22 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] All done... next();
 
 
+### Glow Alchemy website
+ - [x] Skeleton setup - npm init, skeleton import and update, npm i for the libraries;
+ - [x] Test - DB connection / view / create and new DB;
+ - [x] Resourses migration;
+ - [x] Home page setup - main functionalities;
+ - [x] Models and models field/validation/;
+ - [x] Login, Register, Logout - pages, services, controllers;
+ - [x] Catalog page;
+ - [x] Create/Details/Edit/Search/Delete;
+ - [x] Home page - update the query. Meet the specific requirements for numbers of obj. and sorting.
+ - [x] Recommend functionalities + details page buttons(liked/already liked);
+ - [ ] Path guards - isAuth;
+ - [ ] isOwner guard;
+ - [ ] Dynamic navigations and access;
+ - [ ] All done... next();
+
 # non exam preps
 ## Cosmic Explorer site - client **SPA** and server **Rest**
 ### Cosmic Explorer  **server**
@@ -139,6 +155,7 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [ ] Rebuild ALL controllers in order to avoid rendering and returns json(and erorrs);
  - [x] Catalog/Details/Edit controlers and services - rebuilded
  - [ ] AUTH control
+
 
 ### Cosmic Explorer  **SPA**
  - [x] Skeleton setup - npm init, skeleton update, npm i for the libraries;
