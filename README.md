@@ -137,10 +137,10 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [x] Create/Details/Edit/Search/Delete;
  - [x] Home page - update the query. Meet the specific requirements for numbers of obj. and sorting.
  - [x] Recommend functionalities + details page buttons(liked/already liked);
- - [ ] Path guards - isAuth;
- - [ ] isOwner guard;
- - [ ] Dynamic navigations and access;
- - [ ] All done... next();
+ - [x] Path guards - isAuth;
+ - [x] isOwner guard;
+ - [x] Dynamic navigations and access;
+ - [x] All done... next();
 
 # non exam preps
 ## Cosmic Explorer site - client **SPA** and server **Rest**
@@ -168,3 +168,5 @@ Some exercises from JS Back-end module(Node.js) of JS Web course in Softuni.
  - [ ]
  - [ ]
  - [ ] FE auth functionalities creation and implementation;
+
+### Ride-showcase - exam;
