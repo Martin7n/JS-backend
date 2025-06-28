@@ -30,6 +30,10 @@ router.post("/register", async (req, res) => {
 
     try{
         await authservice.register(userData);
+        const token = await authservice.login(userData);
+        res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
+
+        res.redirect("/")
 
     } catch (err) {
         const error = getErrorMessage(err);        
@@ -37,10 +41,7 @@ router.post("/register", async (req, res) => {
 
     };
 
-     const token = await authservice.login(userData);
-    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
 
-    res.redirect("/")
 
 });
 
@@ -63,12 +64,11 @@ router.post("/login", async (req, res) => {
     try{
         const token = await authservice.login(userData);        
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
-        res.redirect('/');
+        return res.redirect('/');
 
     } catch (err) {
         return res.render('auth/login', { error: getErrorMessage(err), user: userData });
     };
-    res.redirect("/")
 });
 
 

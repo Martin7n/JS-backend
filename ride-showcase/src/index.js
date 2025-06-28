@@ -25,8 +25,7 @@ app.use(expressSession({
     }
 }))
 
-// * HBS settings ()
-// ! import handlebars from 'express-handlebars';
+
 
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
