@@ -7,10 +7,11 @@ const router = Router();
 
 
 router.get("/rides", async(req, res) => {
+    const title = "Car catalog"
     
     try {
             const data = await carService.getAll()
-            res.render("car/catalog", {data})
+            res.render("car/catalog", {data, title})
         } catch (err){
             const error = getErrorMessage(err)
             return res.render("car/catalog", {error})
@@ -22,7 +23,9 @@ router.get("/rides", async(req, res) => {
 
 
 router.get("/create", isAuth, (req, res) => {
-     res.render("car/create")
+        const title = "Create Ride"
+
+     res.render("car/create", {title})
 });
 
 
@@ -46,6 +49,7 @@ router.post("/create", isAuth, async (req, res) => {
     
 
     router.get("/details/:carId", async (req, res) => {
+        const title = "Details Ride"
         const userId = req.user?.id;
         const carId =  req.params.carId
          let liked = false;
@@ -60,7 +64,7 @@ router.post("/create", isAuth, async (req, res) => {
                  liked = true;
                  
             }
-            res.render("car/details", {data, emails, liked, owner})
+            res.render("car/details", {data, emails, liked, owner, title})
 
             // res.render("car/details", {data})
 
@@ -73,6 +77,7 @@ router.post("/create", isAuth, async (req, res) => {
 
 
     router.get("/edit/:carId", isAuth, async (req, res) => {
+        const title = "Edit Ride"
         const carId =  req.params.carId;
         const userId = req.user?.id;
 
@@ -83,7 +88,7 @@ router.post("/create", isAuth, async (req, res) => {
             const data = await carService.getOne(carId);
             if (data.owner.id != userId) {throw new Error("You are not authorised")}
 
-            res.render("car/edit", {data})
+            res.render("car/edit", {data, title})
 
 
         } catch(err){
@@ -116,13 +121,13 @@ router.post("/create", isAuth, async (req, res) => {
 
 
     router.get("/showcase", isAuth, async(req, res) => {
-
+    const title = "Showcase"
        const filter = req.user?.id;
     
     try {
             const data = await carService.getByOwner(filter)
             console.log(data)
-            res.render("car/showcase", {data})
+            res.render("car/showcase", {data, title})
         } catch (err){
             const error = getErrorMessage(err)
             return res.render("home", {error})
@@ -133,14 +138,14 @@ router.post("/create", isAuth, async (req, res) => {
 
     router.get("/delete/:carId", isAuth, async(req, res) =>{
 
-        const user = req.user?.id
+        const userId = req.user?.id
         const carId =  req.params.carId;
 
         try {
 
             const data = await carService.getOne(carId);
-            console.log(data.owner.id == user)
-            if (data.owner == user){
+            console.log(data.owner.id == userId)
+            if (data.owner.id == userId){
                 await carService.delete(carId)
                 return res.redirect("/cars/rides")
             } else 
@@ -158,14 +163,14 @@ router.post("/create", isAuth, async (req, res) => {
 
      router.get("/like/:carId", isAuth, async(req, res) =>{
 
-        const user = req.user?.id
+        const userId = req.user?.id
         const carId =  req.params.carId;
 
         try {
 
             const data = await carService.getOne(carId);
-            if (data.owner.id != user){
-                await carService.like(carId, user)
+            if (data.owner.id != userId){
+                await carService.like(carId, userId)
                 return res.redirect(`/cars/details/${carId}`)
             } else 
             {  throw new Error("You don't have permission to like you own cars cars")}
