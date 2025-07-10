@@ -4,19 +4,42 @@ import complexService from "../services/complexService.js";
 
 const router = Router();
 
-router.get("", (req, res) => {
+router.get("/add-exercise", async (req, res) => {
 
-    complexService.createExercise()
+    const newEx = await complexService.createExercise()
 
-    res.send("Ok")
+    res.json(newEx)
 })
 
-router.get("/to", (req, res) => {
+router.get("/create-complex", async (req, res) => {
 
-    complexService.createComplex()
-     res.send("new")
+
+    const createdComnplex = await complexService.createComplex();
+    res.send(createdComnplex)
+
 
 })
+
+router.get("/read-complexes", async (req, res) => {
+
+    const all = await complexService.readComplex()
+    // const allt = await complexService.readComplexes({type:"second"})
+    const allt = await complexService.readComplexes()
+
+     res.json(allt)
+
+},
+
+router.get("/random-complex", async(req, res) =>{
+
+    // const complex = await complexService.randomCom({type:"second"})
+    const complex = await complexService.randomCom()
+
+    res.json(complex)
+
+})
+
+)
 
 export default router;
 

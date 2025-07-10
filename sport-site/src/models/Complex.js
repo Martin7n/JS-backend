@@ -14,7 +14,7 @@ const complexSchema = new Schema({
         //                 validator: 
         //                 val => /^https?:\/\//.test(val),
         //                 message: (props) => `${props.value} is invalid image url!`
-        //                 }
+        //              a   }
         // },
         likes:          [{ type:Types.ObjectId, ref: "User"}],
         // owner:          { type: Types.ObjectId, ref: "User", required: true }
