@@ -42,15 +42,16 @@ app.set('views', './src/views');
 
 const dbName = "new_wo"
 mongooseConnect(dbName);
+app.use(cors({
+  origin: 'http://localhost:4200'
+}));
+
 app.use(authMiddleware);
 app.use(routes);
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
 });
-app.use(cors({
-  origin: 'http://localhost:5173'
-}));
 
 
 
